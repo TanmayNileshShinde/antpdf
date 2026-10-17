@@ -17,7 +17,9 @@ export function generateToolMetadata(slug: string): Metadata {
   const canonicalUrl = `${BASE_URL}/${slug}`;
 
   return {
-    title: tool.metaTitle,
+    title: {
+      absolute: tool.metaTitle,
+    },
     description: tool.metaDescription,
     keywords: tool.keywords,
     authors: [
