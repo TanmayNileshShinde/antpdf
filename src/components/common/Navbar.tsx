@@ -10,7 +10,6 @@ import {
   Zap,
   Search,
 } from 'lucide-react';
-import { GithubIcon } from './GithubIcon';
 import { ThemeToggle } from './ThemeToggle';
 import { ALL_TOOLS_LIST } from '@/lib/seo/toolsData';
 
@@ -136,17 +135,6 @@ export function Navbar() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span>0 KB Server Transfer</span>
             </div>
-
-            {/* GitHub Link */}
-            <a
-              href="https://github.com/TanmayNileshShinde/antpdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg border border-surface-border bg-white dark:bg-card hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-colors"
-              aria-label="GitHub Repository"
-            >
-              <GithubIcon className="w-3.5 h-3.5" />
-            </a>
 
             {/* Dark Mode Switcher */}
             <ThemeToggle />

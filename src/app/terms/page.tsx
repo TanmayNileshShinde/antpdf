@@ -4,7 +4,7 @@ import { BASE_URL } from '@/lib/seo/toolsData';
 export const metadata: Metadata = {
   title: 'Terms of Service | AnTPDF',
   description:
-    'Terms of Service for using AnTPDF — the open-source, client-side PDF studio.',
+    'Terms of Service for using AnTPDF: the private, client side, zero knowledge PDF studio.',
   alternates: {
     canonical: `${BASE_URL}/terms`,
   },
@@ -35,11 +35,11 @@ export default function TermsPage() {
 
         <section className="space-y-2">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-            2. Open Source License (MIT)
+            2. Proprietary Ownership &amp; Intellectual Property
           </h2>
           <p>
-            AnTPDF is open-source software authored collaboratively by Tanmay Nilesh Shinde and Antara Parab.
-            The source code is licensed under the MIT License and hosted publicly on GitHub.
+            AnTPDF is a proprietary software studio co authored exclusively by Tanmay Nilesh Shinde and Antara Parab.
+            All software architecture, source code, visual design, and intellectual property rights are reserved exclusively by Tanmay Nilesh Shinde and Antara Parab.
           </p>
         </section>
 

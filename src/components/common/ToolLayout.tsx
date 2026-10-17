@@ -169,11 +169,11 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
                   <td className="p-3.5 text-muted">Slow cloud queues</td>
                 </tr>
                 <tr>
-                  <td className="p-3.5 font-medium text-slate-800 dark:text-slate-200">Source Code</td>
+                  <td className="p-3.5 font-medium text-slate-800 dark:text-slate-200">Execution Privacy</td>
                   <td className="p-3.5 font-bold text-emerald-500 flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5" /> 100% Open Source MIT
+                    <Check className="w-3.5 h-3.5" /> 100% In Browser RAM
                   </td>
-                  <td className="p-3.5 text-muted">Closed Proprietary</td>
+                  <td className="p-3.5 text-muted">Remote Cloud Server</td>
                 </tr>
               </tbody>
             </table>

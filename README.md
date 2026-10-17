@@ -1,12 +1,11 @@
-# AntPDF — 100% In-Browser PDF Studio with Programmatic SEO
+# AnTPDF — 100% In-Browser PDF Studio with Programmatic SEO
 
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)](https://nextjs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](https://antpdf.tanmayshinde.com/terms)
 [![Privacy: Zero Server Uploads](https://img.shields.io/badge/Privacy-100%25%20In--Browser-emerald)](https://antpdf.tanmayshinde.com/privacy)
-[![Tests: Vitest](https://img.shields.io/badge/Tests-10%2F10%20Passing-success)](https://vitest.dev/)
+[![Tests: Vitest](https://img.shields.io/badge/Tests-18%2F18%20Passing-success)](https://vitest.dev/)
 
 > **Live Website:** [https://antpdf.tanmayshinde.com](https://antpdf.tanmayshinde.com)  
-> **GitHub Repository:** [https://github.com/TanmayNileshShinde/antpdf](https://github.com/TanmayNileshShinde/antpdf)  
 > **Authors:** Tanmay Nilesh Shinde & Antara Parab
 
 ---
@@ -24,7 +23,7 @@ Unlike legacy services like **iLovePDF** and **Smallpdf** which upload sensitive
 
 ## 🧱 Collaborative Architecture
 
-AnTPDF is built as an open-source studio co-authored by Tanmay Nilesh Shinde and Antara Parab:
+AnTPDF is built as an independent private studio co-authored exclusively by Tanmay Nilesh Shinde and Antara Parab:
 
 ```
 antpdf/
@@ -126,6 +125,5 @@ npm run build
 
 ---
 
-## 🛡️ License
-
-MIT License &copy; 2026 Tanmay Nilesh Shinde & Antara Parab.
+## 🛡️ License & Intellectual Property
+Proprietary Software Studio &copy; 2026 Tanmay Nilesh Shinde & Antara Parab. All rights reserved. Not open source.

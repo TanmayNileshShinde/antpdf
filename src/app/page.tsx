@@ -1,4 +1,5 @@
-import { Shield, Zap, Heart, ExternalLink, Cpu, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
+import { Shield, Zap, Heart, Cpu, CheckCircle } from 'lucide-react';
 import { BentoGrid } from '@/components/common/BentoGrid';
 import { JsonLd } from '@/components/common/JsonLd';
 import { BASE_URL } from '@/lib/seo/toolsData';
@@ -63,13 +64,11 @@ export default function HomePage() {
             </a>
 
             <a
-              href="https://github.com/TanmayNileshShinde/antpdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#features"
               className="w-full sm:w-auto px-5 py-3 rounded-xl studio-surface hover:bg-slate-100 dark:hover:bg-white/5 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors"
             >
-              <span>GitHub Source Code</span>
-              <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+              <Shield className="w-4 h-4 text-emerald-500" />
+              <span>Zero Knowledge Security</span>
             </a>
           </div>
 
@@ -193,7 +192,7 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-3 font-mono">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] bg-violet-500/10 text-violet-500 font-medium">
             <Heart className="w-3 h-3 text-rose-500 fill-rose-500" />
-            <span>Open Source Collaborative Architecture</span>
+            <span>Independent Software Studio</span>
           </div>
 
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans">
@@ -201,20 +200,18 @@ export default function HomePage() {
           </h2>
 
           <p className="text-xs text-muted max-w-lg mx-auto font-sans leading-relaxed">
-            AnTPDF is an open source, privacy first studio built with client side WebAssembly.
+            AnTPDF is an independent, privacy first studio built with client side WebAssembly.
             Every tool runs directly on your device with zero server uploads, zero telemetry, and zero paywalls.
           </p>
 
           <div className="pt-2">
-            <a
-              href="https://github.com/TanmayNileshShinde/antpdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-500 hover:underline"
+            <Link
+              href="/privacy"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-500 hover:underline font-sans"
             >
-              <span>Explore GitHub Repository</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+              <span>Learn About Zero Knowledge Privacy</span>
+              <Shield className="w-3.5 h-3.5 text-indigo-500" />
+            </Link>
           </div>
         </div>
       </section>

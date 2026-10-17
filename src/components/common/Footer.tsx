@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { Shield } from 'lucide-react';
-import { GithubIcon } from './GithubIcon';
 import { ALL_TOOLS_LIST } from '@/lib/seo/toolsData';
 
 export function Footer() {
@@ -42,14 +41,12 @@ export function Footer() {
             </div>
 
             <div className="pt-2 flex items-center gap-3">
-              <a
-                href="https://github.com/TanmayNileshShinde/antpdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/privacy"
                 className="inline-flex items-center gap-1.5 text-xs font-mono text-muted hover:text-slate-900 dark:hover:text-white transition-colors"
               >
-                <GithubIcon className="w-4 h-4" /> Open Source on GitHub
-              </a>
+                Zero Cloud Transmission Guarantee
+              </Link>
             </div>
           </div>
 
@@ -145,7 +142,7 @@ export function Footer() {
         {/* Co-Authorship & Bottom Bar */}
         <div className="pt-8 mt-10 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
           <div className="flex items-center gap-2">
-            <span>© 2026 AnTPDF &bull; Open source under MIT License</span>
+            <span>© 2026 AnTPDF &bull; All rights reserved</span>
           </div>
 
           <div className="flex items-center gap-1.5">
