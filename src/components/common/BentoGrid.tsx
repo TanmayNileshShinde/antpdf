@@ -160,15 +160,9 @@ export function BentoGrid() {
                       </div>
 
                       <div className="flex items-center gap-1.5 font-mono text-[10px]">
-                        {tool.author === 'Antara' ? (
-                          <span className="px-2 py-0.5 rounded bg-violet-500/10 text-violet-500 font-medium">
-                            Antara Scope
-                          </span>
-                        ) : (
-                          <span className="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-500 font-medium">
-                            Tanmay Scope
-                          </span>
-                        )}
+                        <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 font-medium capitalize">
+                          {tool.category}
+                        </span>
                       </div>
                     </div>
 

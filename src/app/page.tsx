@@ -201,8 +201,8 @@ export default function HomePage() {
           </h2>
 
           <p className="text-xs text-muted max-w-lg mx-auto font-sans leading-relaxed">
-            Phase 1 implements Tanmay 65% scope covering the Core WASM Engine, Programmatic SEO, and Studio Bento UI.
-            Phase 2 implements Antara 35% scope covering Visual Page Organizers and Transcoders.
+            AnTPDF is an open source, privacy first studio built with client side WebAssembly.
+            Every tool runs directly on your device with zero server uploads, zero telemetry, and zero paywalls.
           </p>
 
           <div className="pt-2">

@@ -637,7 +637,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     isAvailable: true,
   },
 
-  // Antara's 35% Scope Stubs with full pSEO metadata:
+  // Interactive Canvas Studio Tools with full pSEO metadata:
   'organize-pdf': {
     id: 'organize-pdf',
     slug: 'organize-pdf',
@@ -651,7 +651,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'organize',
     icon: 'Grid',
     author: 'Antara',
-    badge: 'Antara Module',
+    badge: 'Visual Grid',
     keywords: ['organize pdf', 'reorder pdf pages', 'rearrange pdf pages visually', 'sort pdf pages'],
     howTo: [
       { step: 1, title: 'Upload Document', description: 'Load your multi-page PDF to render visual thumbnails.' },
@@ -681,7 +681,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'organize',
     icon: 'Trash2',
     author: 'Antara',
-    badge: 'Antara Module',
+    badge: 'Interactive',
     keywords: ['remove pages from pdf', 'delete pdf pages', 'cut pages from pdf', 'pdf page deleter'],
     howTo: [
       { step: 1, title: 'Upload File', description: 'Inspect all pages as interactive visual cards.' },
@@ -711,7 +711,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'Image',
     author: 'Antara',
-    badge: 'Antara Module',
+    badge: 'High DPI',
     keywords: ['pdf to jpg', 'convert pdf to image', 'save pdf as jpg', 'pdf to picture'],
     howTo: [
       { step: 1, title: 'Upload PDF', description: 'Select the PDF file you wish to convert to JPG.' },
@@ -741,7 +741,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'FileImage',
     author: 'Antara',
-    badge: 'Antara Module',
+    badge: 'Lossless',
     keywords: ['pdf to png', 'convert pdf to png', 'extract png from pdf', 'lossless pdf to image'],
     howTo: [
       { step: 1, title: 'Upload PDF', description: 'Select your PDF document for image extraction.' },
@@ -771,7 +771,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'Images',
     author: 'Antara',
-    badge: 'Antara Module',
+    badge: 'Multi Image',
     keywords: ['jpg to pdf', 'images to pdf', 'photo to pdf', 'convert pictures to pdf'],
     howTo: [
       { step: 1, title: 'Select Photos', description: 'Drop multiple JPG or PNG images into the dropzone.' },
@@ -861,7 +861,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'edit',
     icon: 'PenTool',
     author: 'Antara',
-    badge: 'Antara Module',
+    badge: 'Digital Signature',
     keywords: ['sign pdf online', 'digital signature pdf', 'draw signature on pdf', 'electronic signature free'],
     howTo: [
       { step: 1, title: 'Upload PDF Document', description: 'Load the document requiring signature.' },

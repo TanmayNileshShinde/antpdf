@@ -62,15 +62,9 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
             <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1 font-semibold">
               <ShieldCheck className="w-3 h-3" /> Zero Server Transfer
             </span>
-            {tool.author === 'Antara' ? (
-              <span className="px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-500 font-semibold">
-                Antara Module
-              </span>
-            ) : (
-              <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 font-semibold">
-                Tanmay Module
-              </span>
-            )}
+            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 font-semibold">
+              Client Side WASM
+            </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">

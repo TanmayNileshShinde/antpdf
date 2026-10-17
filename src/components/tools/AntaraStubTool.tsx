@@ -39,10 +39,10 @@ export function AntaraStubTool({ tool }: AntaraStubToolProps) {
             </span>
             <div>
               <h3 className="text-sm font-bold tracking-tight text-neutral-900 dark:text-white">
-                Co Author Module: Antara&apos;s 35% Scope
+                Interactive Canvas Studio &bull; Work in Progress
               </h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-                Architected by Tanmay Nilesh Shinde &bull; Ready for Antara Parab
+                Collaborative feature by Tanmay Nilesh Shinde &amp; Antara Parab
               </p>
             </div>
           </div>
@@ -60,9 +60,9 @@ export function AntaraStubTool({ tool }: AntaraStubToolProps) {
           </p>
 
           <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 font-mono text-xs text-neutral-200 space-y-1.5">
-            <div className="text-neutral-500">{'// Next steps for Antara:'}</div>
+            <div className="text-neutral-500">{'// Development branch:'}</div>
             <div className="text-emerald-400">git pull origin main</div>
-            <div className="text-neutral-300">git checkout -b feat/antara-{tool.slug}</div>
+            <div className="text-neutral-300">git checkout -b feat/{tool.slug}</div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">

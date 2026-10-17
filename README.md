@@ -24,12 +24,12 @@ Unlike legacy services like **iLovePDF** and **Smallpdf** which upload sensitive
 
 ## 🧱 Collaborative Architecture
 
-AntPDF is built as a collaborative open-source studio divided across two scoped modules:
+AnTPDF is built as an open-source studio co-authored by Tanmay Nilesh Shinde and Antara Parab:
 
 ```
 antpdf/
 ├── src/
-│   ├── app/                      # Next.js 15 App Router statically generated routes
+│   ├── app/                      # Next.js App Router statically generated routes
 │   │   ├── merge-pdf/            # pSEO tool route (SSG)
 │   │   ├── split-pdf/
 │   │   ├── compress-pdf/
@@ -39,31 +39,31 @@ antpdf/
 │   │   ├── add-page-numbers/
 │   │   ├── watermark-pdf/
 │   │   ├── flatten-pdf/
-│   │   ├── organize-pdf/         # Antara Module Stub
-│   │   ├── remove-pages/         # Antara Module Stub
-│   │   ├── pdf-to-jpg/           # Antara Module Stub
-│   │   ├── pdf-to-png/           # Antara Module Stub
-│   │   ├── jpg-to-pdf/           # Antara Module Stub
-│   │   ├── word-to-pdf/          # Antara Module Stub
-│   │   ├── pdf-to-word/          # Antara Module Stub
-│   │   ├── sign-pdf/             # Antara Module Stub
-│   │   ├── sitemap.ts            # Dynamic sitemap indexing all 18+ routes
+│   │   ├── word-to-pdf/          # Client-side docx transcoder
+│   │   ├── pdf-to-word/          # Client-side docx generator
+│   │   ├── organize-pdf/         # Visual canvas studio
+│   │   ├── remove-pages/         # Interactive page remover
+│   │   ├── pdf-to-jpg/           # High-DPI image rasterizer
+│   │   ├── pdf-to-png/           # Lossless image rasterizer
+│   │   ├── jpg-to-pdf/           # Multi-image compiler
+│   │   ├── sign-pdf/             # Digital signature pad
+│   │   ├── sitemap.ts            # Dynamic sitemap indexing all routes
 │   │   └── robots.ts             # Directives for search engine crawlers
 │   ├── components/
 │   │   ├── common/               # Navbar, Footer, BentoGrid, Dropzone, ThemeToggle, ToolLayout
-│   │   └── tools/                # Interactive tool widgets (Merge, Split, Protect, etc.)
+│   │   └── tools/                # Interactive tool widgets (Merge, Split, Protect, Transcoders, etc.)
 │   ├── lib/
-│   │   ├── pdf/                  # Pure client-side PDF Engine (typed algorithms)
+│   │   ├── pdf/                  # Pure client-side PDF Engine (typed algorithms & transcoders)
 │   │   └── seo/                  # Programmatic SEO metadata & Schema.org JSON-LD
 │   └── types/                    # TypeScript ambient definitions
 └── tests/
-    └── pdfEngine.test.ts         # Vitest unit test suite (10/10 passing)
+    └── pdfEngine.test.ts         # Vitest unit test suite (12/12 passing)
 ```
 
-### 🎯 Scope Breakdown:
+### 🎯 Feature Capabilities:
 
-#### 1. Tanmay's 65% Architectural Scope (Completed & Live in Phase 1):
-- **Core WASM Engine (`src/lib/pdf/`):**
+#### 1. Core WASM Engine & Transcoders:
+- **Client-Side PDF Engine (`src/lib/pdf/`):**
   - `mergePdfs(files: File[])` — Memory-efficient multi-document merge.
   - `splitPdf(file: File, ranges: string)` — Arbitrary page & range extraction.
   - `rotatePdf(file: File, degrees: number, pages?: number[])` — Permanent 90°/180°/270° orientation matrix fix.
@@ -73,20 +73,21 @@ antpdf/
   - `addPageNumbers(file: File, options: PageNumberOptions)` — Custom position, format ("Page X of Y"), and fonts.
   - `watermarkPdf(file: File, text: string, options: WatermarkOptions)` — Diagonal semi-transparent text watermark.
   - `flattenPdf(file: File)` — Flattens interactive AcroForm fields into static graphics.
+  - `convertWordToPdf(file: File)` — Client-side Word docx to PDF conversion.
+  - `convertPdfToWord(file: File)` — Client-side PDF to editable Word docx extraction.
 - **Programmatic SEO (pSEO) & Google Ranking Engine:**
   - Automated dynamic metadata generator for 100/100 Google Lighthouse SEO.
   - Rich Snippets: `WebApplication`, `HowTo` (3-step guides), and `FAQPage` Schema.org JSON-LD on every tool page.
   - Automated `sitemap.xml` with priority weighting and `robots.txt` directives.
 - **Modern Dark/Light Bento UI:**
-  - Glassmorphic design with Tailwind CSS v4, Lucide React, and confetti animations.
+  - Glassmorphic design with Tailwind CSS v4, Lucide React, and subtle micro-interactions.
   - Real-time instant search bar and category filter tabs.
 
-#### 2. Antara's 35% Scope (Phase 2):
+#### 2. Visual Canvas Studio:
 - `/organize-pdf` — Interactive visual drag-and-drop page thumbnail sorter.
 - `/remove-pages` — Click-to-delete visual page remover gallery.
 - `/pdf-to-jpg` & `/pdf-to-png` — High-DPI canvas page rasterizer.
 - `/jpg-to-pdf` — Multi-image to PDF converter.
-- `/word-to-pdf` & `/pdf-to-word` — Client-side `.docx` transcoders.
 - `/sign-pdf` — Digital signature drawing canvas pad with vector stroke smoothing.
 
 ---
