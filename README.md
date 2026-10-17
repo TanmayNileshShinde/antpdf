@@ -84,7 +84,7 @@ antpdf/
   - Real-time instant search bar and category filter tabs.
 
 #### 2. Visual Canvas Studio:
-- `/organize-pdf` — Interactive visual drag-and-drop page thumbnail sorter.
+- `/organize-pdf` — Reorder Pages interactive visual drag-and-drop page thumbnail sorter.
 - `/remove-pages` — Click-to-delete visual page remover gallery.
 - `/pdf-to-jpg` & `/pdf-to-png` — High-DPI canvas page rasterizer.
 - `/jpg-to-pdf` — Multi-image to PDF converter.

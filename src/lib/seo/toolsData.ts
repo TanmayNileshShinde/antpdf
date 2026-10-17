@@ -644,8 +644,8 @@ export const TOOLS: Record<string, ToolDefinition> = {
   'organize-pdf': {
     id: 'organize-pdf',
     slug: 'organize-pdf',
-    name: 'Organize PDF',
-    metaTitle: 'Organize PDF Pages Online — Visual Drag and Drop | AnTPDF',
+    name: 'Reorder Pages',
+    metaTitle: 'Reorder PDF Pages Online Free — Visual Drag and Drop | AnTPDF',
     metaDescription:
       'Reorder, sort, and arrange PDF pages visually with interactive drag and drop. 100% client-side privacy, free with zero server uploads.',
     shortDescription: 'Drag-and-drop visual page sorter to reorder document pages easily.',
