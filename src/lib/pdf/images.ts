@@ -242,3 +242,71 @@ async function rasterizeImageToPngBytes(file: File): Promise<Uint8Array> {
     img.src = url;
   });
 }
+
+export interface PdfThumbnail {
+  pageNumber: number;
+  dataUrl: string;
+  width: number;
+  height: number;
+  originalWidth: number;
+  originalHeight: number;
+}
+
+/**
+ * Renders lightweight preview thumbnails for PDF pages using client-side canvas.
+ */
+export async function renderPdfThumbnails(
+  file: File,
+  options?: { scale?: number; maxPages?: number }
+): Promise<PdfThumbnail[]> {
+  const arrayBuffer = await file.arrayBuffer();
+  const pdfjsLib = await import('pdfjs-dist/build/pdf.js');
+
+  const loadingTask = pdfjsLib.getDocument({
+    data: new Uint8Array(arrayBuffer),
+    disableFontFace: true,
+  });
+
+  const pdfDoc = await loadingTask.promise;
+  const numPages = options?.maxPages
+    ? Math.min(pdfDoc.numPages, options.maxPages)
+    : pdfDoc.numPages;
+
+  const scale = options?.scale ?? 0.45;
+  const thumbnails: PdfThumbnail[] = [];
+
+  for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+    const page = await pdfDoc.getPage(pageNum);
+    const unscaledViewport = page.getViewport({ scale: 1.0 });
+    const viewport = page.getViewport({ scale });
+
+    if (typeof document !== 'undefined') {
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.floor(viewport.width);
+      canvas.height = Math.floor(viewport.height);
+      const ctx = canvas.getContext('2d');
+
+      if (ctx) {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        await page.render({
+          canvasContext: ctx,
+          viewport,
+        }).promise;
+
+        thumbnails.push({
+          pageNumber: pageNum,
+          dataUrl: canvas.toDataURL('image/jpeg', 0.8),
+          width: canvas.width,
+          height: canvas.height,
+          originalWidth: unscaledViewport.width,
+          originalHeight: unscaledViewport.height,
+        });
+      }
+    }
+  }
+
+  return thumbnails;
+}
+

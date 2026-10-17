@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { RotateCw, RotateCcw, Download, CheckCircle2, Loader2, RefreshCw } from 'lucide-react';
+import { RotateCw, RotateCcw, Download, Loader2, RefreshCw } from 'lucide-react';
 import { FileDropzone, UploadedPdfMeta } from '@/components/common/FileDropzone';
 import { rotatePdf, downloadBlob, formatBytes } from '@/lib/pdf';
 import { triggerConfetti } from '@/lib/confetti';

@@ -14,6 +14,9 @@ import {
   convertWordToPdf,
   convertPdfToWord,
   convertImagesToPdf,
+  organizePdf,
+  removePdfPages,
+  signPdf,
   parsePageRanges,
   formatBytes,
 } from '../src/lib/pdf';
@@ -242,4 +245,103 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
     const doc = await PDFDocument.load(buffer);
     expect(doc.getPageCount()).toBe(2);
   });
+
+  it('organizes, reorders, and rotates pages in organizePdf', async () => {
+    const file = await createTestPdfFile('multi.pdf', 4);
+    const organizedBlob = await organizePdf(file, [
+      { originalIndex: 3, rotation: 90 },
+      { originalIndex: 0, rotation: 0 },
+      { originalIndex: 2, rotation: 180 },
+    ]);
+
+    expect(organizedBlob).toBeInstanceOf(Blob);
+    const buffer = await organizedBlob.arrayBuffer();
+    const doc = await PDFDocument.load(buffer);
+    expect(doc.getPageCount()).toBe(3);
+
+    const pages = doc.getPages();
+    expect(pages[0].getRotation().angle).toBe(90);
+    expect(pages[1].getRotation().angle).toBe(0);
+    expect(pages[2].getRotation().angle).toBe(180);
+  });
+
+  it('rejects invalid inputs in organizePdf', async () => {
+    const file = await createTestPdfFile('multi.pdf', 3);
+    await expect(organizePdf(file, [])).rejects.toThrowError(
+      'At least one page must be included in the organized PDF.'
+    );
+    await expect(
+      organizePdf(file, [{ originalIndex: 5 }])
+    ).rejects.toThrowError('Invalid page index: 6');
+  });
+
+  it('removes designated pages cleanly in removePdfPages', async () => {
+    const file = await createTestPdfFile('multi.pdf', 4);
+    // Remove page 2 and page 4 (1-based)
+    const cleanedBlob = await removePdfPages(file, [2, 4]);
+
+    expect(cleanedBlob).toBeInstanceOf(Blob);
+    const buffer = await cleanedBlob.arrayBuffer();
+    const doc = await PDFDocument.load(buffer);
+    expect(doc.getPageCount()).toBe(2);
+  });
+
+  it('throws error when attempting to remove all pages in removePdfPages', async () => {
+    const file = await createTestPdfFile('single.pdf', 1);
+    await expect(removePdfPages(file, [1])).rejects.toThrowError(
+      'Cannot remove all pages from PDF. At least one page must remain.'
+    );
+  });
+
+  it('injects digital signature stamps at vector coordinates in signPdf', async () => {
+    const file = await createTestPdfFile('contract.pdf', 2);
+    const pngBase64 =
+      'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    const pngBuffer = Buffer.from(pngBase64, 'base64');
+
+    const signedBlob = await signPdf(file, [
+      {
+        pageNumber: 1,
+        x: 50,
+        y: 50,
+        width: 120,
+        height: 60,
+        imageBytes: new Uint8Array(pngBuffer),
+      },
+      {
+        pageNumber: 2,
+        x: 100,
+        y: 100,
+        width: 100,
+        height: 50,
+        imageDataUrl: `data:image/png;base64,${pngBase64}`,
+      },
+    ]);
+
+    expect(signedBlob).toBeInstanceOf(Blob);
+    const buffer = await signedBlob.arrayBuffer();
+    const doc = await PDFDocument.load(buffer);
+    expect(doc.getPageCount()).toBe(2);
+  });
+
+  it('throws error on out-of-bounds pageNumber in signPdf', async () => {
+    const file = await createTestPdfFile('contract.pdf', 2);
+    const pngBase64 =
+      'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    const pngBuffer = Buffer.from(pngBase64, 'base64');
+
+    await expect(
+      signPdf(file, [
+        {
+          pageNumber: 5,
+          x: 10,
+          y: 10,
+          width: 50,
+          height: 50,
+          imageBytes: new Uint8Array(pngBuffer),
+        },
+      ])
+    ).rejects.toThrowError('Invalid page number 5. Document has 2 pages.');
+  });
 });
+

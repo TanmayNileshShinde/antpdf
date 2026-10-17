@@ -4,6 +4,8 @@ import {
   PageNumberOptions,
   WatermarkOptions,
   CompressOptions,
+  OrganizePageItem,
+  SignaturePlacement,
 } from './types';
 import {
   fileToUint8Array,
@@ -350,3 +352,149 @@ export async function flattenPdf(file: File): Promise<Blob> {
   const flattenedBytes = await doc.save({ useObjectStreams: true });
   return uint8ArrayToBlob(flattenedBytes);
 }
+
+/**
+ * Reorganizes, reorders, and selectively rotates pages of a PDF document.
+ */
+export async function organizePdf(
+  file: File,
+  pageItems: OrganizePageItem[]
+): Promise<Blob> {
+  if (!file) throw new Error('No PDF file provided.');
+  if (!pageItems || pageItems.length === 0) {
+    throw new Error('At least one page must be included in the organized PDF.');
+  }
+
+  const fileBytes = await fileToUint8Array(file);
+  const sourceDoc = await PDFDocument.load(fileBytes, { ignoreEncryption: true });
+  const totalPages = sourceDoc.getPageCount();
+
+  for (const item of pageItems) {
+    if (item.originalIndex < 0 || item.originalIndex >= totalPages) {
+      throw new Error(`Invalid page index: ${item.originalIndex + 1}`);
+    }
+  }
+
+  const newDoc = await PDFDocument.create();
+  const indicesToCopy = pageItems.map((item) => item.originalIndex);
+  const copiedPages = await newDoc.copyPages(sourceDoc, indicesToCopy);
+
+  copiedPages.forEach((page, idx) => {
+    const item = pageItems[idx];
+    if (item.rotation) {
+      const currentAngle = page.getRotation().angle;
+      const normalizedAngle = ((currentAngle + item.rotation) % 360 + 360) % 360;
+      page.setRotation(degrees(normalizedAngle));
+    }
+    newDoc.addPage(page);
+  });
+
+  newDoc.setProducer('AnTPDF (https://antpdf.tanmayshinde.com)');
+  newDoc.setCreator('AnTPDF Interactive Page Organizer');
+
+  const organizedBytes = await newDoc.save({ useObjectStreams: true });
+  return uint8ArrayToBlob(organizedBytes);
+}
+
+/**
+ * Removes designated page numbers from a PDF document, preserving all other pages.
+ * @param pagesToRemove 1-based array of page numbers to delete
+ */
+export async function removePdfPages(
+  file: File,
+  pagesToRemove: number[]
+): Promise<Blob> {
+  if (!file) throw new Error('No PDF file provided.');
+  const fileBytes = await fileToUint8Array(file);
+  const sourceDoc = await PDFDocument.load(fileBytes, { ignoreEncryption: true });
+  const totalPages = sourceDoc.getPageCount();
+
+  const removeSet = new Set(pagesToRemove.map((p) => p - 1));
+  const keepIndices: number[] = [];
+
+  for (let i = 0; i < totalPages; i++) {
+    if (!removeSet.has(i)) {
+      keepIndices.push(i);
+    }
+  }
+
+  if (keepIndices.length === 0) {
+    throw new Error('Cannot remove all pages from PDF. At least one page must remain.');
+  }
+
+  const newDoc = await PDFDocument.create();
+  const copiedPages = await newDoc.copyPages(sourceDoc, keepIndices);
+  copiedPages.forEach((page) => newDoc.addPage(page));
+
+  newDoc.setProducer('AnTPDF (https://antpdf.tanmayshinde.com)');
+  newDoc.setCreator('AnTPDF Page Remover Engine');
+
+  const resultBytes = await newDoc.save({ useObjectStreams: true });
+  return uint8ArrayToBlob(resultBytes);
+}
+
+/**
+ * Injects digital signatures or stamps onto specified PDF pages at vector coordinates.
+ */
+export async function signPdf(
+  file: File,
+  placements: SignaturePlacement[]
+): Promise<Blob> {
+  if (!file) throw new Error('No PDF file provided.');
+  if (!placements || placements.length === 0) {
+    throw new Error('At least one signature placement is required.');
+  }
+
+  const fileBytes = await fileToUint8Array(file);
+  const doc = await PDFDocument.load(fileBytes, { ignoreEncryption: true });
+  const pages = doc.getPages();
+
+  for (const placement of placements) {
+    const pageIndex = placement.pageNumber - 1;
+    if (pageIndex < 0 || pageIndex >= pages.length) {
+      throw new Error(`Invalid page number ${placement.pageNumber}. Document has ${pages.length} pages.`);
+    }
+
+    const page = pages[pageIndex];
+
+    let imageBytes = placement.imageBytes;
+    if (!imageBytes && placement.imageDataUrl) {
+      const base64Data = placement.imageDataUrl.split(',')[1];
+      if (typeof Buffer !== 'undefined') {
+        imageBytes = new Uint8Array(Buffer.from(base64Data, 'base64'));
+      } else {
+        const bin = atob(base64Data);
+        const u8 = new Uint8Array(bin.length);
+        for (let j = 0; j < bin.length; j++) {
+          u8[j] = bin.charCodeAt(j);
+        }
+        imageBytes = u8;
+      }
+    }
+
+    if (!imageBytes) {
+      throw new Error('No image data provided for signature placement.');
+    }
+
+    let embeddedImage;
+    try {
+      embeddedImage = await doc.embedPng(imageBytes);
+    } catch {
+      embeddedImage = await doc.embedJpg(imageBytes);
+    }
+
+    page.drawImage(embeddedImage, {
+      x: placement.x,
+      y: placement.y,
+      width: placement.width,
+      height: placement.height,
+    });
+  }
+
+  doc.setProducer('AnTPDF (https://antpdf.tanmayshinde.com)');
+  doc.setCreator('AnTPDF Digital Signature Studio');
+
+  const signedBytes = await doc.save({ useObjectStreams: true });
+  return uint8ArrayToBlob(signedBytes);
+}
+

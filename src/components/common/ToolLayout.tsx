@@ -3,14 +3,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  Shield,
   ChevronRight,
   ChevronDown,
   ArrowRight,
   Check,
   X as XIcon,
   ShieldCheck,
-  Lock,
 } from 'lucide-react';
 import { ToolDefinition, ALL_TOOLS_LIST } from '@/lib/seo/toolsData';
 import { generateToolJsonLd } from '@/lib/seo/metadata';

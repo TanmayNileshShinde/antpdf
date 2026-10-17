@@ -119,7 +119,7 @@ export function Navbar() {
           {/* Right Action Bar */}
           <div className="flex items-center gap-2.5">
             {/* Command palette search trigger */}
-            <a
+            <Link
               href="/#tools-grid"
               className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-surface-border bg-slate-100/60 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-xs text-muted hover:text-slate-900 dark:hover:text-white transition-all"
             >
@@ -128,7 +128,7 @@ export function Navbar() {
               <kbd className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-white dark:bg-slate-800 border border-surface-border text-slate-500 dark:text-slate-400">
                 ⌘K
               </kbd>
-            </a>
+            </Link>
 
             {/* Live WASM Telemetry Pill */}
             <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">

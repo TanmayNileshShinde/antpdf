@@ -43,3 +43,18 @@ export interface PdfDocumentInfo {
   isEncrypted: boolean;
   sizeBytes: number;
 }
+
+export interface OrganizePageItem {
+  originalIndex: number;
+  rotation?: number;
+}
+
+export interface SignaturePlacement {
+  pageNumber: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  imageDataUrl?: string;
+  imageBytes?: Uint8Array;
+}

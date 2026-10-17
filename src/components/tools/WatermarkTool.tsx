@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Stamp, Download, CheckCircle2, Loader2, RefreshCw } from 'lucide-react';
+import { Stamp, Download, Loader2, RefreshCw } from 'lucide-react';
 import { FileDropzone, UploadedPdfMeta } from '@/components/common/FileDropzone';
 import { watermarkPdf, downloadBlob, formatBytes } from '@/lib/pdf';
 import { triggerConfetti } from '@/lib/confetti';
