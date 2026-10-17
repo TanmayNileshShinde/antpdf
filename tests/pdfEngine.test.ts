@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { PDFDocument } from 'pdf-lib';
+import { Document, Packer, Paragraph } from 'docx';
 import {
   mergePdfs,
   splitPdf,
@@ -10,6 +11,8 @@ import {
   addPageNumbers,
   watermarkPdf,
   flattenPdf,
+  convertWordToPdf,
+  convertPdfToWord,
   parsePageRanges,
   formatBytes,
 } from '../src/lib/pdf';
@@ -147,5 +150,42 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
     const buffer = await flattenedBlob.arrayBuffer();
     const doc = await PDFDocument.load(buffer);
     expect(doc.getPageCount()).toBe(1);
+  });
+
+  it('converts a Word docx file to PDF in-memory', async () => {
+    const wordDoc = new Document({
+      sections: [
+        {
+          properties: {},
+          children: [
+            new Paragraph({ text: 'AnTPDF Word to PDF In-Memory Test' }),
+            new Paragraph({ text: 'Second paragraph with sample content.' }),
+          ],
+        },
+      ],
+    });
+
+    const docxBlob = await Packer.toBlob(wordDoc);
+    const docxFile = new File([docxBlob], 'sample.docx', {
+      type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    });
+
+    const res = await convertWordToPdf(docxFile);
+    expect(res.blob).toBeInstanceOf(Blob);
+    expect(res.blob.type).toBe('application/pdf');
+    expect(res.pageCount).toBeGreaterThanOrEqual(1);
+
+    const pdfBuffer = await res.blob.arrayBuffer();
+    const loadedDoc = await PDFDocument.load(pdfBuffer);
+    expect(loadedDoc.getPageCount()).toBe(1);
+  });
+
+  it('converts a PDF file to editable Word docx format in-memory', async () => {
+    const testPdf = await createTestPdfFile('contract.pdf', 2);
+    const res = await convertPdfToWord(testPdf);
+
+    expect(res.blob).toBeInstanceOf(Blob);
+    expect(res.pageCount).toBe(2);
+    expect(res.blob.size).toBeGreaterThan(1000);
   });
 });

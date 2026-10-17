@@ -800,8 +800,8 @@ export const TOOLS: Record<string, ToolDefinition> = {
       'Convert Microsoft Word .docx files into universally readable PDF documents without requiring Microsoft Office or uploading to external servers.',
     category: 'convert',
     icon: 'FileText',
-    author: 'Antara',
-    badge: 'Antara Module',
+    author: 'Tanmay',
+    badge: 'WASM Transcoder',
     keywords: ['word to pdf', 'docx to pdf', 'convert word to pdf online free', 'doc to pdf'],
     howTo: [
       { step: 1, title: 'Upload DOCX Document', description: 'Select your Word file.' },
@@ -811,11 +811,11 @@ export const TOOLS: Record<string, ToolDefinition> = {
     faqs: [
       {
         question: 'Is Microsoft Office required?',
-        answer: 'No, AnTPDF uses in-browser HTML5 and canvas transcoder engines.',
+        answer: 'No, AnTPDF uses in-browser OpenXML and vector layout engines.',
       },
     ],
     features: ['DOCX parsing', 'Zero cloud upload', 'Free and unlimited'],
-    isAvailable: false,
+    isAvailable: true,
   },
 
   'pdf-to-word': {
@@ -830,8 +830,8 @@ export const TOOLS: Record<string, ToolDefinition> = {
       'Extract text, formatting, and layout from PDF files into fully editable Microsoft Word .docx files.',
     category: 'convert',
     icon: 'FileOutput',
-    author: 'Antara',
-    badge: 'Antara Module',
+    author: 'Tanmay',
+    badge: 'OpenXML Engine',
     keywords: ['pdf to word', 'convert pdf to docx', 'pdf to word editable free', 'pdf to doc'],
     howTo: [
       { step: 1, title: 'Upload PDF', description: 'Select the PDF you need to edit.' },
@@ -845,7 +845,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
       },
     ],
     features: ['Extracts editable paragraphs', 'Preserves text flow', '100% private'],
-    isAvailable: false,
+    isAvailable: true,
   },
 
   'sign-pdf': {

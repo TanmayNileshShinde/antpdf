@@ -76,11 +76,6 @@ export function Navbar() {
                           <span className="text-xs font-semibold text-slate-900 dark:text-slate-100 group-hover/item:text-indigo-500">
                             {tool.name}
                           </span>
-                          {tool.author === 'Antara' && (
-                            <span className="text-[9px] px-1 rounded bg-violet-500/10 text-violet-500 font-medium">
-                              v2
-                            </span>
-                          )}
                         </div>
                         <span className="text-[11px] text-muted line-clamp-1 mt-0.5">
                           {tool.shortDescription}
