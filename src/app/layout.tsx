@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     'smallpdf alternative',
   ],
   authors: [
-    { name: 'Tanmay Nilesh Shinde', url: 'https://tanmayshinde.com' },
+    { name: 'Tanmay Shinde', url: 'https://tanmayshinde.com' },
     { name: 'Antara Parab' },
   ],
-  creator: 'Tanmay Nilesh Shinde',
+  creator: 'Tanmay Shinde',
   publisher: 'AnTPDF',
   alternates: {
     canonical: BASE_URL,

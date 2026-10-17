@@ -27,7 +27,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-xs text-muted leading-relaxed max-w-sm font-sans">
-              The zero server, zero knowledge in browser PDF studio named after co creators Antara Parab &amp; Tanmay Nilesh Shinde.
+              The zero server, zero knowledge in browser PDF studio named after co creators Antara Parab &amp; Tanmay Shinde.
               Every document executes 100% locally on your machine using
               WebAssembly. No remote cloud uploads, no daily paywalls, and no file size caps.
             </p>
@@ -148,7 +148,7 @@ export function Footer() {
           <div className="flex items-center gap-1.5">
             <span>Engineered by</span>
             <span className="font-semibold text-slate-900 dark:text-white">
-              Tanmay Nilesh Shinde
+              Tanmay Shinde
             </span>
             <span>&</span>
             <span className="font-semibold text-slate-900 dark:text-white">

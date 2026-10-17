@@ -23,10 +23,10 @@ export function generateToolMetadata(slug: string): Metadata {
     description: tool.metaDescription,
     keywords: tool.keywords,
     authors: [
-      { name: 'Tanmay Nilesh Shinde', url: 'https://tanmayshinde.com' },
+      { name: 'Tanmay Shinde', url: 'https://tanmayshinde.com' },
       { name: 'Antara Parab' },
     ],
-    creator: 'Tanmay Nilesh Shinde',
+    creator: 'Tanmay Shinde',
     publisher: 'AnTPDF',
     alternates: {
       canonical: canonicalUrl,
@@ -95,7 +95,7 @@ export function generateToolJsonLd(slug: string) {
     browserRequirements: 'Requires JavaScript and HTML5 Canvas / WebAssembly support.',
     author: {
       '@type': 'Person',
-      name: 'Tanmay Nilesh Shinde',
+      name: 'Tanmay Shinde',
       url: 'https://tanmayshinde.com',
     },
   };

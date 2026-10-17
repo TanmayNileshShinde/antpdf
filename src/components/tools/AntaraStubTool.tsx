@@ -42,7 +42,7 @@ export function AntaraStubTool({ tool }: AntaraStubToolProps) {
                 Interactive Canvas Studio &bull; Work in Progress
               </h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-                Collaborative feature by Tanmay Nilesh Shinde &amp; Antara Parab
+                Collaborative feature by Tanmay Shinde &amp; Antara Parab
               </p>
             </div>
           </div>

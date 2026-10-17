@@ -6,7 +6,7 @@
 [![Tests: Vitest](https://img.shields.io/badge/Tests-18%2F18%20Passing-success)](https://vitest.dev/)
 
 > **Live Website:** [https://antpdf.tanmayshinde.com](https://antpdf.tanmayshinde.com)  
-> **Authors:** Tanmay Nilesh Shinde & Antara Parab
+> **Authors:** Tanmay Shinde & Antara Parab
 
 ---
 
@@ -23,7 +23,7 @@ Unlike legacy services like **iLovePDF** and **Smallpdf** which upload sensitive
 
 ## 🧱 Collaborative Architecture
 
-AnTPDF is built as an independent private studio co-authored exclusively by Tanmay Nilesh Shinde and Antara Parab:
+AnTPDF is built as an independent private studio co-authored exclusively by Tanmay Shinde and Antara Parab:
 
 ```
 antpdf/
@@ -126,4 +126,4 @@ npm run build
 ---
 
 ## 🛡️ License & Intellectual Property
-Proprietary Software Studio &copy; 2026 Tanmay Nilesh Shinde & Antara Parab. All rights reserved. Not open source.
+Proprietary Software Studio &copy; 2026 Tanmay Shinde & Antara Parab. All rights reserved. Not open source.

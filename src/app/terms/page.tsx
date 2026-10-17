@@ -38,8 +38,8 @@ export default function TermsPage() {
             2. Proprietary Ownership &amp; Intellectual Property
           </h2>
           <p>
-            AnTPDF is a proprietary software studio co authored exclusively by Tanmay Nilesh Shinde and Antara Parab.
-            All software architecture, source code, visual design, and intellectual property rights are reserved exclusively by Tanmay Nilesh Shinde and Antara Parab.
+            AnTPDF is a proprietary software studio co authored exclusively by Tanmay Shinde and Antara Parab.
+            All software architecture, source code, visual design, and intellectual property rights are reserved exclusively by Tanmay Shinde and Antara Parab.
           </p>
         </section>
 

@@ -14,7 +14,7 @@ export default function HomePage() {
       'Zero server, zero knowledge in browser PDF studio. Merge, split, compress, protect, unlock, rotate, and watermark PDFs 100% locally on your device.',
     author: {
       '@type': 'Person',
-      name: 'Tanmay Nilesh Shinde',
+      name: 'Tanmay Shinde',
       url: 'https://tanmayshinde.com',
     },
     potentialAction: {
@@ -196,7 +196,7 @@ export default function HomePage() {
           </div>
 
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans">
-            Crafted by Tanmay Nilesh Shinde &amp; Antara Parab
+            Crafted by Tanmay Shinde &amp; Antara Parab
           </h2>
 
           <p className="text-xs text-muted max-w-lg mx-auto font-sans leading-relaxed">
