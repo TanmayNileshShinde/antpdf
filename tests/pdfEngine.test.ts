@@ -159,7 +159,7 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
           properties: {},
           children: [
             new Paragraph({ text: 'AnTPDF Word to PDF In-Memory Test' }),
-            new Paragraph({ text: 'Second paragraph with sample content.' }),
+            new Paragraph({ text: 'Second paragraph with “curly quotes” and dashes.' }),
           ],
         },
       ],
@@ -170,7 +170,7 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
       type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     });
 
-    const res = await convertWordToPdf(docxFile);
+    const res = await convertWordToPdf(docxFile, { pageSize: 'Letter' });
     expect(res.blob).toBeInstanceOf(Blob);
     expect(res.blob.type).toBe('application/pdf');
     expect(res.pageCount).toBeGreaterThanOrEqual(1);
@@ -187,5 +187,43 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
     expect(res.blob).toBeInstanceOf(Blob);
     expect(res.pageCount).toBe(2);
     expect(res.blob.size).toBeGreaterThan(1000);
+  });
+
+  it('parses ranges with spaces around hyphens and validates edge cases', () => {
+    expect(parsePageRanges(' 1 - 3, 5 ', 5)).toEqual([1, 2, 3, 5]);
+    expect(parsePageRanges('3', 5)).toEqual([3]);
+    expect(() => parsePageRanges('', 5)).toThrowError();
+    expect(() => parsePageRanges('   ', 5)).toThrowError();
+  });
+
+  it('handles empty file list gracefully in mergePdfs', async () => {
+    await expect(mergePdfs([])).rejects.toThrowError('Please select at least one PDF file to merge.');
+  });
+
+  it('handles empty password rejection in protectPdf and watermark text validation', async () => {
+    const testPdf = await createTestPdfFile('test.pdf', 1);
+    await expect(protectPdf(testPdf, '')).rejects.toThrowError('Password cannot be empty.');
+    await expect(watermarkPdf(testPdf, '')).rejects.toThrowError('Watermark text cannot be empty.');
+  });
+
+  it('handles duplicate page indices in rotatePdf without double rotating', async () => {
+    const testPdf = await createTestPdfFile('rotate-test.pdf', 2);
+    const rotatedBlob = await rotatePdf(testPdf, 90, [1, 1]);
+    const buffer = await rotatedBlob.arrayBuffer();
+    const doc = await PDFDocument.load(buffer);
+    expect(doc.getPages()[0].getRotation().angle).toBe(90);
+  });
+
+  it('supports multiple positions and number-only format in addPageNumbers', async () => {
+    const testPdf = await createTestPdfFile('numbered-test.pdf', 2);
+    const res = await addPageNumbers(testPdf, {
+      position: 'bottom-center',
+      format: 'number-only',
+      startFrom: 10,
+    });
+    expect(res).toBeInstanceOf(Blob);
+    const buffer = await res.arrayBuffer();
+    const doc = await PDFDocument.load(buffer);
+    expect(doc.getPageCount()).toBe(2);
   });
 });

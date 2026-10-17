@@ -51,7 +51,7 @@ export function formatBytes(bytes: number, decimals: number = 2): string {
  * Validates against the total pages of the document.
  */
 export function parsePageRanges(rangeStr: string, totalPages: number): number[] {
-  const cleanStr = rangeStr.trim();
+  const cleanStr = rangeStr.trim().replace(/\s*-\s*/g, '-');
   if (!cleanStr) {
     throw new Error('Please enter at least one page number or range.');
   }

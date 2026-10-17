@@ -84,7 +84,9 @@ export async function rotatePdf(
       ? pages.map((p) => p - 1)
       : allPages.map((_, idx) => idx);
 
-  for (const idx of targetIndices) {
+  const uniqueIndices = Array.from(new Set(targetIndices));
+
+  for (const idx of uniqueIndices) {
     if (idx >= 0 && idx < allPages.length) {
       const page = allPages[idx];
       const currentRotation = page.getRotation().angle;
@@ -285,13 +287,22 @@ export async function watermarkPdf(
     color = { r: 0.6, g: 0.6, b: 0.6 },
   } = options;
 
+  // Sanitize non-ASCII / curly quotes for standard Helvetica
+  const cleanText = text
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/[^\x20-\x7E]/g, '');
+
+  const displayText = cleanText.trim().length > 0 ? cleanText : text;
+
   const fileBytes = await fileToUint8Array(file);
   const doc = await PDFDocument.load(fileBytes, { ignoreEncryption: true });
   const font = await doc.embedFont(StandardFonts.HelveticaBold);
   const pages = doc.getPages();
 
   const angleRad = (rotationDegrees * Math.PI) / 180;
-  const textWidth = font.widthOfTextAtSize(text, fontSize);
+  const textWidth = font.widthOfTextAtSize(displayText, fontSize);
   const textHeight = font.heightAtSize(fontSize);
 
   pages.forEach((page) => {
@@ -306,7 +317,7 @@ export async function watermarkPdf(
       (textWidth / 2) * Math.sin(angleRad) -
       (textHeight / 2) * Math.cos(angleRad);
 
-    page.drawText(text, {
+    page.drawText(displayText, {
       x,
       y,
       size: fontSize,

@@ -7,6 +7,20 @@ export interface WordToPdfOptions {
   margin?: number;
 }
 
+function cleanTextForPdf(str: string): string {
+  return str
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/[\u2022\u2023\u25E6]/g, '*')
+    .replace(/[\u2026]/g, '...')
+    .replace(/[^\x20-\x7E\t\r\n]/g, (char) => {
+      const code = char.charCodeAt(0);
+      if (code >= 160 && code <= 255) return char;
+      return ' ';
+    });
+}
+
 /**
  * Converts a Word .docx document into a clean PDF directly in browser memory.
  * Uses mammoth for OpenXML parsing and pdf-lib for vector page layout.
@@ -26,7 +40,7 @@ export async function convertWordToPdf(
   const htmlResult = await mammoth.convertToHtml(mammothInput as unknown as mammoth.MammothOptions);
   const rawTextResult = await mammoth.extractRawText(mammothInput as unknown as mammoth.MammothOptions);
 
-  const text = rawTextResult.value || 'Empty document';
+  const text = cleanTextForPdf(rawTextResult.value || 'Empty document');
   const htmlPreview = htmlResult.value || '';
 
   const doc = await PDFDocument.create();
@@ -43,7 +57,7 @@ export async function convertWordToPdf(
   let y = pageHeight - margin;
 
   // Title header from filename
-  const cleanTitle = file.name.replace(/\.docx?$/i, '');
+  const cleanTitle = cleanTextForPdf(file.name.replace(/\.docx?$/i, ''));
   page.drawText(cleanTitle, {
     x: margin,
     y,
