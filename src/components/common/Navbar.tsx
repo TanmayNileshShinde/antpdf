@@ -76,6 +76,11 @@ export function Navbar() {
                           <span className="text-xs font-semibold text-slate-900 dark:text-slate-100 group-hover/item:text-indigo-500">
                             {tool.name}
                           </span>
+                          {tool.isV2 && (
+                            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-violet-500/10 text-violet-500 font-bold">
+                              v2
+                            </span>
+                          )}
                         </div>
                         <span className="text-[11px] text-muted line-clamp-1 mt-0.5">
                           {tool.shortDescription}

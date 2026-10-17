@@ -23,6 +23,7 @@ export interface ToolDefinition {
   icon: string;
   author: 'Tanmay' | 'Antara';
   badge?: string;
+  isV2?: boolean;
   keywords: string[];
   howTo: ToolHowToStep[];
   faqs: ToolFaq[];
@@ -517,6 +518,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     icon: 'Stamp',
     author: 'Tanmay',
     badge: 'Copyright Protection',
+    isV2: true,
     keywords: [
       'watermark pdf',
       'add watermark to pdf online',
@@ -584,6 +586,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     icon: 'FileCheck',
     author: 'Tanmay',
     badge: 'Form Locking',
+    isV2: true,
     keywords: [
       'flatten pdf',
       'flatten pdf form fields',
@@ -652,6 +655,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     icon: 'Grid',
     author: 'Antara',
     badge: 'Visual Grid',
+    isV2: true,
     keywords: ['organize pdf', 'reorder pdf pages', 'rearrange pdf pages visually', 'sort pdf pages'],
     howTo: [
       { step: 1, title: 'Upload Document', description: 'Load your multi-page PDF to render visual thumbnails.' },
@@ -682,6 +686,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     icon: 'Trash2',
     author: 'Antara',
     badge: 'Interactive',
+    isV2: true,
     keywords: ['remove pages from pdf', 'delete pdf pages', 'cut pages from pdf', 'pdf page deleter'],
     howTo: [
       { step: 1, title: 'Upload File', description: 'Inspect all pages as interactive visual cards.' },
@@ -857,6 +862,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     icon: 'PenTool',
     author: 'Antara',
     badge: 'Digital Signature',
+    isV2: true,
     keywords: ['sign pdf online', 'digital signature pdf', 'draw signature on pdf', 'electronic signature free'],
     howTo: [
       { step: 1, title: 'Upload PDF Document', description: 'Load the document requiring signature.' },

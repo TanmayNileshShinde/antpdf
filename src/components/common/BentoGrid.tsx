@@ -160,6 +160,11 @@ export function BentoGrid() {
                       </div>
 
                       <div className="flex items-center gap-1.5 font-mono text-[10px]">
+                        {tool.isV2 && (
+                          <span className="px-1.5 py-0.5 rounded bg-violet-500/10 text-violet-500 font-bold border border-violet-500/20">
+                            v2
+                          </span>
+                        )}
                         <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 font-medium capitalize">
                           {tool.category}
                         </span>

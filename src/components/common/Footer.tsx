@@ -63,9 +63,14 @@ export function Footer() {
                 <li key={tool.id}>
                   <Link
                     href={`/${tool.slug}`}
-                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors"
+                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors inline-flex items-center gap-1.5"
                   >
-                    {tool.name}
+                    <span>{tool.name}</span>
+                    {tool.isV2 && (
+                      <span className="text-[9px] font-mono px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
+                        v2
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}
@@ -82,9 +87,14 @@ export function Footer() {
                 <li key={tool.id}>
                   <Link
                     href={`/${tool.slug}`}
-                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors"
+                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors inline-flex items-center gap-1.5"
                   >
-                    {tool.name}
+                    <span>{tool.name}</span>
+                    {tool.isV2 && (
+                      <span className="text-[9px] font-mono px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
+                        v2
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}
@@ -101,9 +111,14 @@ export function Footer() {
                 <li key={tool.id}>
                   <Link
                     href={`/${tool.slug}`}
-                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors"
+                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors inline-flex items-center gap-1.5"
                   >
-                    {tool.name}
+                    <span>{tool.name}</span>
+                    {tool.isV2 && (
+                      <span className="text-[9px] font-mono px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
+                        v2
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}
