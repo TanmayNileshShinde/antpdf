@@ -13,6 +13,7 @@ import {
   flattenPdf,
   convertWordToPdf,
   convertPdfToWord,
+  convertImagesToPdf,
   parsePageRanges,
   formatBytes,
 } from '../src/lib/pdf';
@@ -223,6 +224,21 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
     });
     expect(res).toBeInstanceOf(Blob);
     const buffer = await res.arrayBuffer();
+    const doc = await PDFDocument.load(buffer);
+    expect(doc.getPageCount()).toBe(2);
+  });
+
+  it('converts multiple images into a combined PDF document', async () => {
+    const pngBase64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    const pngBuffer = Buffer.from(pngBase64, 'base64');
+    const img1 = new File([pngBuffer], 'image1.png', { type: 'image/png' });
+    const img2 = new File([pngBuffer], 'image2.png', { type: 'image/png' });
+
+    const pdfBlob = await convertImagesToPdf([img1, img2], { pageSize: 'A4', orientation: 'auto' });
+    expect(pdfBlob).toBeInstanceOf(Blob);
+    expect(pdfBlob.type).toBe('application/pdf');
+
+    const buffer = await pdfBlob.arrayBuffer();
     const doc = await PDFDocument.load(buffer);
     expect(doc.getPageCount()).toBe(2);
   });

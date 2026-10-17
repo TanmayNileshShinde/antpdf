@@ -711,7 +711,6 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'Image',
     author: 'Antara',
-    badge: 'High DPI',
     keywords: ['pdf to jpg', 'convert pdf to image', 'save pdf as jpg', 'pdf to picture'],
     howTo: [
       { step: 1, title: 'Upload PDF', description: 'Select the PDF file you wish to convert to JPG.' },
@@ -725,7 +724,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
       },
     ],
     features: ['High-DPI rendering', 'Batch ZIP packaging', 'Zero server uploads'],
-    isAvailable: false,
+    isAvailable: true,
   },
 
   'pdf-to-png': {
@@ -741,7 +740,6 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'FileImage',
     author: 'Antara',
-    badge: 'Lossless',
     keywords: ['pdf to png', 'convert pdf to png', 'extract png from pdf', 'lossless pdf to image'],
     howTo: [
       { step: 1, title: 'Upload PDF', description: 'Select your PDF document for image extraction.' },
@@ -755,7 +753,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
       },
     ],
     features: ['Lossless rendering', 'Preserves vector sharpness', 'Client-side canvas'],
-    isAvailable: false,
+    isAvailable: true,
   },
 
   'jpg-to-pdf': {
@@ -771,7 +769,6 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'Images',
     author: 'Antara',
-    badge: 'Multi Image',
     keywords: ['jpg to pdf', 'images to pdf', 'photo to pdf', 'convert pictures to pdf'],
     howTo: [
       { step: 1, title: 'Select Photos', description: 'Drop multiple JPG or PNG images into the dropzone.' },
@@ -785,7 +782,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
       },
     ],
     features: ['Multiple photo stitching', 'Auto orientation fit', '100% local processing'],
-    isAvailable: false,
+    isAvailable: true,
   },
 
   'word-to-pdf': {
@@ -801,7 +798,6 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'FileText',
     author: 'Tanmay',
-    badge: 'WASM Transcoder',
     keywords: ['word to pdf', 'docx to pdf', 'convert word to pdf online free', 'doc to pdf'],
     howTo: [
       { step: 1, title: 'Upload DOCX Document', description: 'Select your Word file.' },
@@ -831,7 +827,6 @@ export const TOOLS: Record<string, ToolDefinition> = {
     category: 'convert',
     icon: 'FileOutput',
     author: 'Tanmay',
-    badge: 'OpenXML Engine',
     keywords: ['pdf to word', 'convert pdf to docx', 'pdf to word editable free', 'pdf to doc'],
     howTo: [
       { step: 1, title: 'Upload PDF', description: 'Select the PDF you need to edit.' },

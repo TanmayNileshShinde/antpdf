@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@pdfsmaller/pdf-encrypt-lite": "^1.2.0",
+    "@types/jszip": "^3.4.0",
     "canvas-confetti": "^1.9.4",
     "docx": "^9.12.0",
+    "jszip": "^3.10.2",
     "lucide-react": "^1.59.0",
     "mammoth": "^1.13.0",
     "next": "16.4.2",
