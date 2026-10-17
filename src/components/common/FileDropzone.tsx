@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { UploadCloud, FileText, X, Plus, AlertCircle } from 'lucide-react';
+import { FileText, X, Plus, AlertCircle, FileUp, ShieldCheck } from 'lucide-react';
 import { formatBytes, getPdfPageCount } from '@/lib/pdf';
 
 export interface UploadedPdfMeta {
@@ -27,8 +27,8 @@ export function FileDropzone({
   maxFiles = 50,
   files,
   onFilesChange,
-  title = 'Drag & drop your PDF here',
-  description = 'or click to browse files from your computer',
+  title = 'Drop PDF document to begin',
+  description = 'or browse files from your computer',
 }: FileDropzoneProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
@@ -60,7 +60,7 @@ export function FileDropzone({
           pages = await getPdfPageCount(file);
         }
       } catch {
-        // Fallback if encrypted or loading error
+        // Fallback for encrypted documents
       }
 
       newItems.push({
@@ -106,16 +106,16 @@ export function FileDropzone({
 
   return (
     <div className="w-full space-y-4">
-      {/* Upload Box */}
+      {/* Studio Workbench Upload Area */}
       <div
         onClick={() => inputRef.current?.click()}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`relative border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 select-none ${
+        className={`relative studio-surface studio-grid rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 select-none ${
           isDragOver
-            ? 'border-indigo-500 bg-indigo-50/50 dark:bg-indigo-950/30 scale-[1.01]'
-            : 'border-slate-300 dark:border-slate-700/80 hover:border-indigo-400 dark:hover:border-indigo-500 bg-slate-50/50 dark:bg-slate-900/40 hover:bg-slate-50 dark:hover:bg-slate-900/70'
+            ? 'border-indigo-500 bg-indigo-500/5 ring-4 ring-indigo-500/10 scale-[1.005]'
+            : 'hover:border-slate-400 dark:hover:border-slate-600'
         }`}
       >
         <input
@@ -132,28 +132,30 @@ export function FileDropzone({
         />
 
         <div className="flex flex-col items-center justify-center space-y-3">
-          <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shadow-xs">
-            <UploadCloud className="w-8 h-8" />
+          <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-white/5 border border-surface-border text-slate-800 dark:text-slate-200 flex items-center justify-center shadow-xs">
+            <FileUp className="w-5 h-5 text-indigo-500" />
           </div>
 
           <div className="space-y-1">
-            <p className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white">
+            <p className="text-sm sm:text-base font-bold text-slate-900 dark:text-white tracking-tight">
               {title}
             </p>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-muted">
               {description}
             </p>
           </div>
 
-          <div className="pt-2 flex items-center gap-2 text-[11px] font-medium text-slate-400 dark:text-slate-500">
-            <span>🔒 Files never leave your browser</span>
+          <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-muted">
+            <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
+              <ShieldCheck className="w-3.5 h-3.5" /> Zero Server Transfer
+            </span>
             <span>•</span>
-            <span>Zero file size limits</span>
+            <span>Local RAM Sandbox</span>
           </div>
         </div>
       </div>
 
-      {/* Error Alert */}
+      {/* Error Banner */}
       {errorMsg && (
         <div className="p-3.5 rounded-xl border border-red-500/20 bg-red-500/10 text-red-600 dark:text-red-400 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
@@ -161,49 +163,50 @@ export function FileDropzone({
         </div>
       )}
 
-      {/* Files List Preview */}
+      {/* Selected Document Workbench Cards */}
       {files.length > 0 && (
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs text-slate-500 px-1 font-medium">
+        <div className="space-y-2.5">
+          <div className="flex items-center justify-between text-xs text-muted px-1 font-semibold">
             <span>
-              {files.length} {files.length === 1 ? 'file' : 'files'} selected
+              {files.length} {files.length === 1 ? 'document loaded in memory' : 'documents loaded in memory'}
             </span>
             {multiple && (
               <button
                 type="button"
                 onClick={() => inputRef.current?.click()}
-                className="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+                className="text-indigo-500 hover:underline flex items-center gap-1 font-medium"
               >
-                <Plus className="w-3.5 h-3.5" /> Add more files
+                <Plus className="w-3.5 h-3.5" /> Append file
               </button>
             )}
           </div>
 
-          <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
+          <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
             {files.map((item, index) => (
               <div
                 key={`${item.name}-${index}`}
-                className="flex items-center justify-between p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs"
+                className="flex items-center justify-between p-3.5 rounded-xl studio-surface"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-9 h-9 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
-                    <FileText className="w-5 h-5" />
+                  <div className="w-8 h-8 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center shrink-0 border border-red-500/20 font-bold text-xs">
+                    <FileText className="w-4 h-4" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs sm:text-sm font-medium text-slate-900 dark:text-white truncate">
+                    <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">
                       {item.name}
                     </p>
-                    <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                      <span>{formatBytes(item.size)}</span>
+                    <div className="flex items-center gap-2 text-[11px] font-mono text-muted">
+                      <span className="font-tabular">{formatBytes(item.size)}</span>
                       {item.pageCount !== undefined && (
                         <>
                           <span>•</span>
-                          <span>
-                            {item.pageCount}{' '}
-                            {item.pageCount === 1 ? 'page' : 'pages'}
+                          <span className="font-tabular">
+                            {item.pageCount} {item.pageCount === 1 ? 'page' : 'pages'}
                           </span>
                         </>
                       )}
+                      <span>•</span>
+                      <span className="text-emerald-500 font-sans font-medium">Ready</span>
                     </div>
                   </div>
                 </div>
@@ -211,8 +214,8 @@ export function FileDropzone({
                 <button
                   type="button"
                   onClick={() => removeFile(index)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                  aria-label="Remove file"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                  aria-label="Remove document"
                 >
                   <X className="w-4 h-4" />
                 </button>

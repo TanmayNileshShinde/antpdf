@@ -31,44 +31,44 @@ export function AntaraStubTool({ tool }: AntaraStubToolProps) {
       />
 
       {/* Collaboration Banner for Antara */}
-      <div className="p-6 sm:p-8 rounded-3xl border border-violet-500/30 bg-gradient-to-br from-violet-500/5 via-indigo-500/5 to-purple-500/10 dark:from-violet-950/20 dark:via-indigo-950/15 dark:to-purple-950/20 space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-violet-200/50 dark:border-violet-800/40">
+      <div className="p-6 sm:p-7 rounded-2xl bg-white/70 dark:bg-neutral-950/80 backdrop-blur-md border border-neutral-200 dark:border-neutral-800/80 shadow-xs space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-neutral-200 dark:border-neutral-800">
           <div className="flex items-center gap-2.5">
-            <span className="p-2 rounded-xl bg-violet-600 text-white shadow-xs">
-              <Sparkles className="w-4 h-4" />
+            <span className="p-2 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs">
+              <Sparkles className="w-4 h-4 text-emerald-400 dark:text-emerald-600" />
             </span>
             <div>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                Co-Author Module: Antara&apos;s 35% Scope
+              <h3 className="text-sm font-bold tracking-tight text-neutral-900 dark:text-white">
+                Co Author Module: Antara&apos;s 35% Scope
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
                 Architected by Tanmay Nilesh Shinde &bull; Ready for Antara Parab
               </p>
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-100 dark:bg-violet-950/80 text-violet-700 dark:text-violet-300 border border-violet-300/60 dark:border-violet-700/60 self-start sm:self-auto">
-            <GitBranch className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 self-start sm:self-auto">
+            <GitBranch className="w-3.5 h-3.5 text-emerald-500" />
             <span>Ready for Pull</span>
           </div>
         </div>
 
-        <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-          <p>
+        <div className="space-y-3 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
+          <p className="leading-relaxed">
             This route and its Google programmatic SEO metadata, OpenGraph tags,
-            sitemaps, and Schema.org JSON-LD are 100% active and indexable.
+            sitemaps, and Schema.org JSON LD are 100% active and indexable.
           </p>
 
-          <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-800 dark:text-slate-200 space-y-1">
-            <div className="text-slate-400">{'// Next steps for Antara:'}</div>
-            <div>git pull origin main</div>
-            <div>git checkout -b feat/antara-{tool.slug}</div>
+          <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 font-mono text-xs text-neutral-200 space-y-1.5">
+            <div className="text-neutral-500">{'// Next steps for Antara:'}</div>
+            <div className="text-emerald-400">git pull origin main</div>
+            <div className="text-neutral-300">git checkout -b feat/antara-{tool.slug}</div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
             {tool.features.map((feature, i) => (
-              <div key={i} className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-                <CheckCircle2 className="w-3.5 h-3.5 text-violet-500 shrink-0" />
+              <div key={i} className="flex items-center gap-2 text-xs font-mono text-neutral-600 dark:text-neutral-400">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                 <span>{feature}</span>
               </div>
             ))}

@@ -74,76 +74,60 @@ export function RotateTool() {
           />
 
           {activeFile && (
-            <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-4">
+            <div className="p-5 rounded-2xl bg-white/70 dark:bg-neutral-950/80 backdrop-blur-md border border-neutral-200 dark:border-neutral-800/80 shadow-xs space-y-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                  Select Rotation Angle
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold mb-2">
+                  Select Rotation Degree
                 </label>
-                <div className="grid grid-cols-3 gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setDegrees(90)}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
-                      degrees === 90
-                        ? 'border-indigo-600 bg-indigo-50/70 dark:bg-indigo-950/40 text-indigo-900 dark:text-indigo-200 ring-2 ring-indigo-500/20'
-                        : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 bg-white dark:bg-slate-900/50 text-slate-700 dark:text-slate-300'
-                    }`}
-                  >
-                    <RotateCw className="w-5 h-5 text-indigo-600" />
-                    <span className="text-xs font-semibold">90° Right</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setDegrees(180)}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
-                      degrees === 180
-                        ? 'border-indigo-600 bg-indigo-50/70 dark:bg-indigo-950/40 text-indigo-900 dark:text-indigo-200 ring-2 ring-indigo-500/20'
-                        : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 bg-white dark:bg-slate-900/50 text-slate-700 dark:text-slate-300'
-                    }`}
-                  >
-                    <RefreshCw className="w-5 h-5 text-indigo-600" />
-                    <span className="text-xs font-semibold">180° Upside</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setDegrees(270)}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
-                      degrees === 270
-                        ? 'border-indigo-600 bg-indigo-50/70 dark:bg-indigo-950/40 text-indigo-900 dark:text-indigo-200 ring-2 ring-indigo-500/20'
-                        : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 bg-white dark:bg-slate-900/50 text-slate-700 dark:text-slate-300'
-                    }`}
-                  >
-                    <RotateCcw className="w-5 h-5 text-indigo-600" />
-                    <span className="text-xs font-semibold">90° Left</span>
-                  </button>
+                <div className="grid grid-cols-3 gap-2.5">
+                  {[
+                    { deg: 90, label: '90° Clockwise', icon: RotateCw },
+                    { deg: 180, label: '180° Inversion', icon: RefreshCw },
+                    { deg: 270, label: '90° Counter', icon: RotateCcw },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <button
+                        key={item.deg}
+                        type="button"
+                        onClick={() => setDegrees(item.deg)}
+                        className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
+                          degrees === item.deg
+                            ? 'border-neutral-900 dark:border-neutral-200 bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-sm'
+                            : 'border-neutral-200 dark:border-neutral-800/80 hover:border-neutral-300 dark:hover:border-neutral-700 bg-white/50 dark:bg-neutral-900/50 text-neutral-700 dark:text-neutral-300'
+                        }`}
+                      >
+                        <Icon className={`w-4 h-4 ${degrees === item.deg ? 'text-emerald-400' : 'text-neutral-500'}`} />
+                        <span className="text-xs font-semibold">{item.label}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                  Apply Rotation To
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold mb-2">
+                  Apply Rotation Scope
                 </label>
                 <div className="flex items-center gap-3">
-                  <label className="flex items-center gap-2 text-xs font-medium text-slate-800 dark:text-slate-200 cursor-pointer">
+                  <label className="flex items-center gap-2 text-xs font-mono text-neutral-800 dark:text-neutral-200 cursor-pointer">
                     <input
                       type="radio"
                       name="applyTo"
                       checked={applyTo === 'all'}
                       onChange={() => setApplyTo('all')}
-                      className="text-indigo-600"
+                      className="accent-neutral-900 dark:accent-neutral-100"
                     />
                     <span>All Pages ({activeFile.pageCount ?? ''})</span>
                   </label>
 
-                  <label className="flex items-center gap-2 text-xs font-medium text-slate-800 dark:text-slate-200 cursor-pointer">
+                  <label className="flex items-center gap-2 text-xs font-mono text-neutral-800 dark:text-neutral-200 cursor-pointer">
                     <input
                       type="radio"
                       name="applyTo"
                       checked={applyTo === 'custom'}
                       onChange={() => setApplyTo('custom')}
-                      className="text-indigo-600"
+                      className="accent-neutral-900 dark:accent-neutral-100"
                     />
                     <span>Specific Pages</span>
                   </label>
@@ -156,7 +140,7 @@ export function RotateTool() {
                       value={pageInput}
                       onChange={(e) => setPageInput(e.target.value)}
                       placeholder="e.g. 1, 3, 5"
-                      className="w-full px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      className="w-full px-3.5 py-2 rounded-xl border border-neutral-300/80 dark:border-neutral-800 bg-white dark:bg-neutral-900/90 text-neutral-900 dark:text-neutral-100 font-mono text-xs focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-400 transition-all"
                     />
                   </div>
                 )}
@@ -165,60 +149,70 @@ export function RotateTool() {
           )}
 
           {error && (
-            <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs sm:text-sm">
+            <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs font-mono">
               {error}
             </div>
           )}
 
-          <div className="flex justify-center pt-2">
+          <div className="flex items-center justify-center pt-2">
             <button
               onClick={handleRotate}
               disabled={!activeFile || isProcessing}
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-700 hover:from-indigo-500 hover:to-violet-600 text-white font-semibold text-sm sm:text-base shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95 flex items-center gap-2.5"
+              className="relative group px-7 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 font-semibold text-xs sm:text-sm tracking-tight border border-neutral-800 dark:border-neutral-200 shadow-sm transition-all active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2.5"
             >
               {isProcessing ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  <span>Rotating Pages...</span>
+                  <Loader2 className="w-4 h-4 animate-spin text-emerald-500" />
+                  <span className="font-mono">Rotating In Browser...</span>
                 </>
               ) : (
                 <>
-                  <RotateCw className="w-5 h-5" />
+                  <RotateCw className="w-4 h-4" />
                   <span>Rotate PDF Permanently</span>
+                  <span className="ml-1 text-[10px] font-mono opacity-60 bg-neutral-800 dark:bg-neutral-200 px-1.5 py-0.5 rounded">
+                    ⌘↵
+                  </span>
                 </>
               )}
             </button>
           </div>
         </>
       ) : (
-        <div className="p-8 sm:p-10 rounded-3xl border border-emerald-500/30 bg-emerald-500/5 dark:bg-emerald-500/10 text-center space-y-6 animate-in fade-in zoom-in-95 duration-200">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center">
-            <CheckCircle2 className="w-8 h-8" />
+        <div className="p-6 sm:p-7 rounded-2xl border border-emerald-500/30 bg-neutral-950 text-white relative overflow-hidden shadow-xl animate-in fade-in zoom-in-95 duration-200 space-y-5">
+          <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold">
+                Orientation Updated
+              </span>
+            </div>
+            <span className="text-[10px] font-mono text-neutral-400">
+              0 bytes cloud transfer
+            </span>
           </div>
 
           <div className="space-y-1">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-              Orientation Permanently Fixed!
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              Rotated by {degrees}° ({formatBytes(resultBlob.size)}).
-              The updated orientation will open correctly in all PDF viewers.
-            </p>
+            <div className="text-base sm:text-lg font-bold tracking-tight text-white">
+              {resultName}
+            </div>
+            <div className="text-xs text-neutral-400 font-mono">
+              Rotated by {degrees}° &bull; Size: {formatBytes(resultBlob.size)} &bull; 100% In Browser WASM
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
             <button
               onClick={handleDownload}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-md shadow-emerald-600/25 flex items-center justify-center gap-2 transition-transform active:scale-95"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs font-mono uppercase tracking-wider transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm"
             >
               <Download className="w-4 h-4" /> Download Rotated PDF
             </button>
 
             <button
               onClick={handleReset}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-neutral-800 hover:border-neutral-700 bg-neutral-900/80 hover:bg-neutral-800 text-neutral-300 font-medium text-xs font-mono uppercase tracking-wider transition-all flex items-center justify-center gap-2"
             >
-              <RefreshCw className="w-4 h-4" /> Rotate Another PDF
+              <RefreshCw className="w-3.5 h-3.5" /> Rotate Another PDF
             </button>
           </div>
         </div>

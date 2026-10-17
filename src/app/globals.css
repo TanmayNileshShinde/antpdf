@@ -2,28 +2,28 @@
 
 :root {
   --background: #f8fafc;
-  --foreground: #0f172a;
+  --foreground: #090d16;
   --card: #ffffff;
-  --card-foreground: #0f172a;
-  --primary: #4f46e5;
+  --card-foreground: #090d16;
+  --surface: #f1f5f9;
+  --surface-border: #e2e8f0;
+  --primary: #4338ca;
   --primary-foreground: #ffffff;
-  --border: #e2e8f0;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --ring: rgba(79, 70, 229, 0.4);
+  --muted: #64748b;
+  --accent-dot: rgba(15, 23, 42, 0.07);
 }
 
 .dark {
-  --background: #090d16;
+  --background: #08090d;
   --foreground: #f8fafc;
-  --card: #0f172a;
+  --card: #0f1219;
   --card-foreground: #f8fafc;
+  --surface: #141822;
+  --surface-border: rgba(255, 255, 255, 0.08);
   --primary: #6366f1;
   --primary-foreground: #ffffff;
-  --border: #1e293b;
-  --muted: #131c31;
-  --muted-foreground: #94a3b8;
-  --ring: rgba(99, 102, 241, 0.4);
+  --muted: #94a3b8;
+  --accent-dot: rgba(255, 255, 255, 0.05);
 }
 
 @theme inline {
@@ -31,54 +31,68 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-surface: var(--surface);
+  --color-surface-border: var(--surface-border);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-border: var(--border);
   --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   min-height: 100vh;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  font-feature-settings: "rlig" 1, "calt" 1;
+  letter-spacing: -0.015em;
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+/* Studio Canvas Background Dot Grid */
+.studio-grid {
+  background-image: radial-gradient(var(--accent-dot) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.dark .glass-panel {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(30, 41, 59, 0.8);
+/* Studio Surface Card */
+.studio-surface {
+  background-color: var(--card);
+  border: 1px solid var(--surface-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glow-card {
-  position: relative;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.dark .studio-surface {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
-.glow-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px -8px rgba(99, 102, 241, 0.18);
+.studio-surface:hover {
+  border-color: rgba(99, 102, 241, 0.35);
 }
 
-.dark .glow-card:hover {
-  box-shadow: 0 12px 32px -8px rgba(99, 102, 241, 0.3);
+/* Studio Glass Card */
+.studio-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--surface-border);
 }
 
-/* Custom scrollbars */
+.dark .studio-glass {
+  background: rgba(14, 17, 24, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Tabular Numbers */
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -86,18 +100,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(100, 116, 139, 0.3);
   border-radius: 9999px;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
-}
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: rgba(100, 116, 139, 0.5);
 }

@@ -61,27 +61,30 @@ export function MergeTool() {
           />
 
           {error && (
-            <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs sm:text-sm">
+            <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs font-mono">
               {error}
             </div>
           )}
 
-          <div className="flex justify-center pt-2">
+          <div className="flex items-center justify-center pt-2">
             <button
               onClick={handleMerge}
               disabled={files.length === 0 || isProcessing}
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-700 hover:from-indigo-500 hover:to-violet-600 text-white font-semibold text-sm sm:text-base shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95 flex items-center gap-2.5"
+              className="relative group px-7 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 font-semibold text-xs sm:text-sm tracking-tight border border-neutral-800 dark:border-neutral-200 shadow-sm transition-all active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2.5"
             >
               {isProcessing ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  <span>Merging PDFs in Browser...</span>
+                  <Loader2 className="w-4 h-4 animate-spin text-emerald-500" />
+                  <span className="font-mono">Merging In Browser...</span>
                 </>
               ) : (
                 <>
-                  <Layers className="w-5 h-5" />
+                  <Layers className="w-4 h-4" />
                   <span>
                     Merge {files.length > 0 ? `${files.length} Files` : 'PDFs Now'}
+                  </span>
+                  <span className="ml-1 text-[10px] font-mono opacity-60 bg-neutral-800 dark:bg-neutral-200 px-1.5 py-0.5 rounded">
+                    ⌘↵
                   </span>
                 </>
               )}
@@ -89,34 +92,41 @@ export function MergeTool() {
           </div>
         </>
       ) : (
-        <div className="p-8 sm:p-10 rounded-3xl border border-emerald-500/30 bg-emerald-500/5 dark:bg-emerald-500/10 text-center space-y-6 animate-in fade-in zoom-in-95 duration-200">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center">
-            <CheckCircle2 className="w-8 h-8" />
+        <div className="p-6 sm:p-7 rounded-2xl border border-emerald-500/30 bg-neutral-950 text-white relative overflow-hidden shadow-xl animate-in fade-in zoom-in-95 duration-200 space-y-5">
+          <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold">
+                Client Execution Complete
+              </span>
+            </div>
+            <span className="text-[10px] font-mono text-neutral-400">
+              0 bytes cloud transfer
+            </span>
           </div>
 
           <div className="space-y-1">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-              PDFs Merged Successfully!
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              Your combined document is ready ({formatBytes(resultBlob.size)}).
-              Processed 100% on your device.
-            </p>
+            <div className="text-base sm:text-lg font-bold tracking-tight text-white">
+              {resultName}
+            </div>
+            <div className="text-xs text-neutral-400 font-mono">
+              Combined Size: {formatBytes(resultBlob.size)} &bull; 100% In Browser WASM
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
             <button
               onClick={handleDownload}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-md shadow-emerald-600/25 flex items-center justify-center gap-2 transition-transform active:scale-95"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs font-mono uppercase tracking-wider transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm"
             >
               <Download className="w-4 h-4" /> Download Combined PDF
             </button>
 
             <button
               onClick={handleReset}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-neutral-800 hover:border-neutral-700 bg-neutral-900/80 hover:bg-neutral-800 text-neutral-300 font-medium text-xs font-mono uppercase tracking-wider transition-all flex items-center justify-center gap-2"
             >
-              <RefreshCw className="w-4 h-4" /> Merge More Files
+              <RefreshCw className="w-3.5 h-3.5" /> Merge More Files
             </button>
           </div>
         </div>

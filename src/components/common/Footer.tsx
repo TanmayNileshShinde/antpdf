@@ -11,32 +11,33 @@ export function Footer() {
   const convertTools = ALL_TOOLS_LIST.filter((t) => t.category === 'convert');
 
   return (
-    <footer className="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/80 transition-colors mt-auto">
+    <footer className="w-full border-t border-surface-border bg-slate-50/70 dark:bg-[#07090e] transition-colors mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand & Manifesto Column */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-violet-600 to-emerald-500 p-0.5 shadow-md">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <span className="text-lg">🐜</span>
-                </div>
+              <div className="w-8 h-8 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 flex items-center justify-center font-bold text-sm shadow-xs">
+                🐜
               </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 AntPDF
               </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-surface-border text-muted">
+                Studio
+              </span>
             </Link>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm">
-              The zero-server, zero-knowledge in-browser PDF studio.
-              Every document is processed 100% locally on your machine using
-              WebAssembly. No remote cloud uploads, no daily paywalls, and no size caps.
+            <p className="text-xs text-muted leading-relaxed max-w-sm font-sans">
+              The zero server, zero knowledge in browser PDF studio.
+              Every document executes 100% locally on your machine using
+              WebAssembly. No remote cloud uploads, no daily paywalls, and no file size caps.
             </p>
 
-            <div className="p-3.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs flex items-start gap-2.5 max-w-sm">
-              <Shield className="w-4 h-4 shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-400 text-xs font-mono flex items-start gap-2.5 max-w-sm">
+              <Shield className="w-4 h-4 shrink-0 mt-0.5 text-emerald-500" />
               <span>
-                <strong>Zero-Knowledge Security:</strong> Your files never touch a remote server.
-                Inspect your browser Network Tab anytime to verify 0 upload requests.
+                <strong>Zero Knowledge Memory:</strong> Your files never leave this device.
+                Open the DevTools Network Tab anytime to verify 0 upload requests.
               </span>
             </div>
 
@@ -45,7 +46,7 @@ export function Footer() {
                 href="https://github.com/TanmayNileshShinde/antpdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-muted hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <GithubIcon className="w-4 h-4" /> Open Source on GitHub
               </a>
@@ -54,19 +55,19 @@ export function Footer() {
 
           {/* Column 1: Organize */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-3.5">
-              Organize PDF
+            <h3 className="text-[11px] font-mono uppercase tracking-wider text-slate-900 dark:text-slate-100 font-semibold mb-3.5">
+              Organize Studio
             </h3>
             <ul className="space-y-2 text-xs">
               {organizeTools.map((tool) => (
                 <li key={tool.id}>
                   <Link
                     href={`/${tool.slug}`}
-                    className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors inline-flex items-center gap-1.5"
+                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors inline-flex items-center gap-1.5"
                   >
                     <span>{tool.name}</span>
                     {tool.author === 'Antara' && (
-                      <span className="text-[9px] px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
+                      <span className="text-[9px] font-mono px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
                         v2
                       </span>
                     )}
@@ -76,9 +77,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: Edit & Optimize */}
+          {/* Column 2: Edit & Security */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-3.5">
+            <h3 className="text-[11px] font-mono uppercase tracking-wider text-slate-900 dark:text-slate-100 font-semibold mb-3.5">
               Edit & Security
             </h3>
             <ul className="space-y-2 text-xs">
@@ -86,11 +87,11 @@ export function Footer() {
                 <li key={tool.id}>
                   <Link
                     href={`/${tool.slug}`}
-                    className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors inline-flex items-center gap-1.5"
+                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors inline-flex items-center gap-1.5"
                   >
                     <span>{tool.name}</span>
                     {tool.author === 'Antara' && (
-                      <span className="text-[9px] px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
+                      <span className="text-[9px] font-mono px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
                         v2
                       </span>
                     )}
@@ -100,9 +101,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Convert & Stubs */}
+          {/* Column 3: Convert & Legal */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-3.5">
+            <h3 className="text-[11px] font-mono uppercase tracking-wider text-slate-900 dark:text-slate-100 font-semibold mb-3.5">
               Convert & Legal
             </h3>
             <ul className="space-y-2 text-xs">
@@ -110,21 +111,21 @@ export function Footer() {
                 <li key={tool.id}>
                   <Link
                     href={`/${tool.slug}`}
-                    className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors inline-flex items-center gap-1.5"
+                    className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors inline-flex items-center gap-1.5"
                   >
                     <span>{tool.name}</span>
                     {tool.author === 'Antara' && (
-                      <span className="text-[9px] px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
+                      <span className="text-[9px] font-mono px-1 py-0.2 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 rounded">
                         v2
                       </span>
                     )}
                   </Link>
                 </li>
               ))}
-              <li className="pt-2 border-t border-slate-200 dark:border-slate-800">
+              <li className="pt-2 border-t border-surface-border">
                 <Link
                   href="/privacy"
-                  className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -132,7 +133,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="text-muted hover:text-slate-900 dark:hover:text-white transition-colors"
                 >
                   Terms of Service
                 </Link>
@@ -142,18 +143,18 @@ export function Footer() {
         </div>
 
         {/* Co-Authorship & Bottom Bar */}
-        <div className="pt-10 mt-10 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+        <div className="pt-8 mt-10 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
           <div className="flex items-center gap-2">
-            <span>© 2026 AntPDF. Open-source under MIT License.</span>
+            <span>© 2026 AntPDF &bull; Open source under MIT License</span>
           </div>
 
-          <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
-            <span>Engineered with passion by</span>
-            <span className="font-semibold text-slate-900 dark:text-slate-200">
+          <div className="flex items-center gap-1.5">
+            <span>Engineered by</span>
+            <span className="font-semibold text-slate-900 dark:text-white">
               Tanmay Nilesh Shinde
             </span>
             <span>&</span>
-            <span className="font-semibold text-slate-900 dark:text-slate-200">
+            <span className="font-semibold text-slate-900 dark:text-white">
               Antara Parab
             </span>
           </div>

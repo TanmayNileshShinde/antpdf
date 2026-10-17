@@ -9,6 +9,8 @@ import {
   ArrowRight,
   Check,
   X as XIcon,
+  ShieldCheck,
+  Lock,
 } from 'lucide-react';
 import { ToolDefinition, ALL_TOOLS_LIST } from '@/lib/seo/toolsData';
 import { generateToolJsonLd } from '@/lib/seo/metadata';
@@ -32,87 +34,87 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
       <JsonLd data={jsonLdData} />
 
       <div className="w-full">
-        {/* Breadcrumb Header */}
-        <div className="border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <nav className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-              <Link href="/" className="hover:text-indigo-600 dark:hover:text-indigo-400">
-                Home
+        {/* Studio Breadcrumb Bar */}
+        <div className="border-b border-surface-border bg-slate-100/50 dark:bg-card/40 py-2.5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="flex items-center gap-1.5 text-xs font-mono text-muted">
+              <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                Studio
               </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-              <Link href="/#tools-grid" className="hover:text-indigo-600 dark:hover:text-indigo-400 capitalize">
+              <ChevronRight className="w-3 h-3 opacity-40" />
+              <Link href="/#tools-grid" className="hover:text-slate-900 dark:hover:text-white transition-colors capitalize">
                 {tool.category}
               </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-              <span className="font-semibold text-slate-800 dark:text-slate-200">
+              <ChevronRight className="w-3 h-3 opacity-40" />
+              <span className="font-semibold text-slate-900 dark:text-white">
                 {tool.name}
               </span>
             </nav>
           </div>
         </div>
 
-        {/* Hero Section */}
-        <section className="py-10 sm:py-14 text-center max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
-              {tool.badge ?? '100% Free'}
+        {/* Tool Studio Header */}
+        <section className="py-8 sm:py-12 text-center max-w-4xl mx-auto px-4 sm:px-6 space-y-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-[11px]">
+            <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/5 border border-surface-border text-slate-700 dark:text-slate-300 font-semibold">
+              {tool.badge ?? 'Studio Tool'}
             </span>
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-              <Shield className="w-3 h-3" /> Zero Server Uploads
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1 font-semibold">
+              <ShieldCheck className="w-3 h-3" /> Zero Server Transfer
             </span>
             {tool.author === 'Antara' ? (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400">
-                Co-authored with Antara Parab
+              <span className="px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-500 font-semibold">
+                Antara Module
               </span>
             ) : (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                Architected by Tanmay Nilesh Shinde
+              <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 font-semibold">
+                Tanmay Module
               </span>
             )}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-            {tool.name} Online
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            {tool.name}
           </h1>
 
-          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm text-muted max-w-xl mx-auto leading-relaxed">
             {tool.longDescription}
           </p>
         </section>
 
-        {/* Interactive Tool Container */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-16">
-          <div className="p-6 sm:p-10 rounded-3xl glass-panel shadow-xl shadow-slate-200/50 dark:shadow-none relative">
+        {/* Studio Interactive Workbench */}
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-14">
+          <div className="p-6 sm:p-8 rounded-2xl studio-surface studio-grid">
             {children}
           </div>
         </section>
 
-        {/* How It Works - 3 Step Guide (HowTo Schema) */}
-        <section className="py-12 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-950/40">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-10">
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                Step-by-Step Guide
+        {/* How It Works (HowTo Schema Section) */}
+        <section className="py-12 border-t border-surface-border bg-slate-50/50 dark:bg-card/30">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
+            <div className="text-center space-y-1.5">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-indigo-500">
+                Execution Workflow
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
-                How to use {tool.name} in 3 Simple Steps
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                How to use {tool.name} in 3 steps
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {tool.howTo.map((item) => (
                 <div
                   key={item.step}
                   id={`step-${item.step}`}
-                  className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-xs relative"
+                  className="p-5 rounded-xl studio-surface space-y-2.5"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center text-sm mb-4 shadow-md shadow-indigo-600/20">
-                    {item.step}
+                  <div className="w-7 h-7 rounded-lg bg-indigo-600 text-white font-mono font-bold flex items-center justify-center text-xs shadow-xs">
+                    0{item.step}
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  <p className="text-xs text-muted leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -122,102 +124,102 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
         </section>
 
         {/* Comparison Callout: AntPDF vs iLovePDF / Smallpdf */}
-        <section className="py-16 max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-              The AntPDF Advantage
+        <section className="py-14 max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
+          <div className="text-center space-y-1.5">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-500">
+              Architecture Analysis
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
-              Why Choose AntPDF Over Cloud Converters?
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+              AntPDF vs Cloud Converters
             </h2>
           </div>
 
-          <div className="overflow-x-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <table className="w-full text-left border-collapse text-xs sm:text-sm">
+          <div className="overflow-x-auto rounded-xl studio-surface">
+            <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40">
-                  <th className="p-4 font-semibold text-slate-600 dark:text-slate-400">Feature</th>
-                  <th className="p-4 font-bold text-indigo-600 dark:text-indigo-400">AntPDF (This Site)</th>
-                  <th className="p-4 font-semibold text-slate-500">iLovePDF & Smallpdf</th>
+                <tr className="border-b border-surface-border bg-slate-100/50 dark:bg-white/5 font-mono text-[11px] uppercase tracking-wider text-muted">
+                  <th className="p-3.5 font-semibold">Capability</th>
+                  <th className="p-3.5 font-bold text-indigo-500">AntPDF Client Studio</th>
+                  <th className="p-3.5 font-semibold text-muted">Legacy Cloud Services</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
+              <tbody className="divide-y divide-surface-border">
                 <tr>
-                  <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Server Uploads</td>
-                  <td className="p-4 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                    <Check className="w-4 h-4" /> 0% (Strictly Local WASM)
+                  <td className="p-3.5 font-medium text-slate-800 dark:text-slate-200">Server Uploads</td>
+                  <td className="p-3.5 font-bold text-emerald-500 flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5" /> 0% (Local WASM)
                   </td>
-                  <td className="p-4 text-red-500 flex items-center gap-1.5">
-                    <XIcon className="w-4 h-4" /> 100% Uploaded to Cloud
+                  <td className="p-3.5 text-red-500 flex items-center gap-1.5">
+                    <XIcon className="w-3.5 h-3.5" /> 100% Uploaded to Cloud
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-slate-900 dark:text-slate-200">File Size Limit</td>
-                  <td className="p-4 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                    <Check className="w-4 h-4" /> Unlimited (Browser RAM)
+                  <td className="p-3.5 font-medium text-slate-800 dark:text-slate-200">File Size Limit</td>
+                  <td className="p-3.5 font-bold text-emerald-500 flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5" /> Unlimited (RAM Bound)
                   </td>
-                  <td className="p-4 text-slate-500">Capped (15MB - 50MB free)</td>
+                  <td className="p-3.5 text-muted">Capped at 15MB free</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Daily Task Limits</td>
-                  <td className="p-4 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                    <Check className="w-4 h-4" /> Zero Limits & Zero Paywalls
+                  <td className="p-3.5 font-medium text-slate-800 dark:text-slate-200">Daily Task Limits</td>
+                  <td className="p-3.5 font-bold text-emerald-500 flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5" /> Zero Paywalls
                   </td>
-                  <td className="p-4 text-slate-500">2 tasks/day then paid paywall</td>
+                  <td className="p-3.5 text-muted">2 tasks per day lock</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Processing Speed</td>
-                  <td className="p-4 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                    <Check className="w-4 h-4" /> Instant (Sub-second WASM)
+                  <td className="p-3.5 font-medium text-slate-800 dark:text-slate-200">Processing Speed</td>
+                  <td className="p-3.5 font-bold text-emerald-500 flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5" /> Sub Second Execution
                   </td>
-                  <td className="p-4 text-slate-500">Slow (Upload + Queue + Download)</td>
+                  <td className="p-3.5 text-muted">Slow cloud queues</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Source Code</td>
-                  <td className="p-4 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                    <Check className="w-4 h-4" /> 100% Open Source (MIT)
+                  <td className="p-3.5 font-medium text-slate-800 dark:text-slate-200">Source Code</td>
+                  <td className="p-3.5 font-bold text-emerald-500 flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5" /> 100% Open Source MIT
                   </td>
-                  <td className="p-4 text-slate-500">Proprietary / Closed Source</td>
+                  <td className="p-3.5 text-muted">Closed Proprietary</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        {/* FAQ Accordion (FAQPage Schema) */}
-        <section className="py-14 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-950/40">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                Frequently Asked Questions
+        {/* FAQ Accordions */}
+        <section className="py-12 border-t border-surface-border bg-slate-50/50 dark:bg-card/30">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-6">
+            <div className="text-center space-y-1">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-indigo-500">
+                Documentation
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
-                Got Questions about {tool.name}?
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                Frequently Asked Questions
               </h2>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {tool.faqs.map((faq, index) => {
                 const isOpen = openFaq === index;
                 return (
                   <div
                     key={index}
-                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden"
+                    className="rounded-xl studio-surface overflow-hidden"
                   >
                     <button
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-semibold text-sm sm:text-base text-slate-900 dark:text-white"
+                      className="w-full p-4 text-left flex items-center justify-between gap-4 font-bold text-xs sm:text-sm text-slate-900 dark:text-white"
                     >
                       <span>{faq.question}</span>
                       <ChevronDown
-                        className={`w-4 h-4 text-slate-400 transition-transform ${
+                        className={`w-4 h-4 text-muted transition-transform duration-200 ${
                           isOpen ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
                     {isOpen && (
-                      <div className="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800/60 pt-3">
+                      <div className="px-4 pb-4 text-xs text-muted leading-relaxed border-t border-surface-border pt-3">
                         {faq.answer}
                       </div>
                     )}
@@ -228,44 +230,40 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
           </div>
         </section>
 
-        {/* Related Tools */}
+        {/* Related Studio Tools */}
         {relatedTools.length > 0 && (
-          <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                More Essential PDF Tools
+          <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-mono uppercase tracking-wider font-bold text-slate-900 dark:text-white">
+                Related Studio Tools
               </h3>
               <Link
                 href="/#tools-grid"
-                className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+                className="text-xs font-semibold text-indigo-500 hover:underline flex items-center gap-1 font-mono"
               >
-                View all <ArrowRight className="w-3.5 h-3.5" />
+                <span>View all</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
               {relatedTools.map((rel) => (
                 <Link
                   key={rel.id}
                   href={`/${rel.slug}`}
-                  className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-indigo-500/50 glow-card transition-all"
+                  className="p-4 rounded-xl studio-surface flex flex-col justify-between group"
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted">
                       {rel.category}
                     </span>
-                    {rel.author === 'Antara' && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 font-medium">
-                        Antara
-                      </span>
-                    )}
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-500 transition-colors">
+                      {rel.name}
+                    </h4>
+                    <p className="text-[11px] text-muted line-clamp-2 leading-relaxed">
+                      {rel.shortDescription}
+                    </p>
                   </div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">
-                    {rel.name}
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
-                    {rel.shortDescription}
-                  </p>
                 </Link>
               ))}
             </div>
