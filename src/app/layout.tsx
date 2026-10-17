@@ -18,19 +18,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'AntPDF — 100% In-Browser PDF Studio | Free, Zero Server Uploads',
-    template: '%s | AntPDF',
+    default: 'AnTPDF — 100% In Browser PDF Studio | Free, Zero Server Uploads',
+    template: '%s | AnTPDF',
   },
   description:
-    'AntPDF is the zero-server, zero-knowledge in-browser PDF studio. Merge, split, compress, protect, unlock, rotate, watermark, and flatten PDFs with 100% client-side privacy. Zero file size caps, zero paywalls.',
+    'AnTPDF is the zero server, zero knowledge in browser PDF studio. Merge, split, compress, protect, unlock, rotate, watermark, and flatten PDFs with 100% client side privacy. Zero file size caps, zero paywalls.',
   keywords: [
-    'AntPDF',
+    'AnTPDF',
     'free pdf editor online',
     'merge pdf',
     'split pdf',
     'compress pdf',
-    'in-browser pdf studio',
-    'client-side pdf tool',
+    'in browser pdf studio',
+    'client side pdf tool',
     'zero server upload pdf',
     'ilovepdf alternative',
     'smallpdf alternative',
@@ -40,24 +40,24 @@ export const metadata: Metadata = {
     { name: 'Antara Parab' },
   ],
   creator: 'Tanmay Nilesh Shinde',
-  publisher: 'AntPDF',
+  publisher: 'AnTPDF',
   alternates: {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: 'AntPDF — 100% In-Browser PDF Studio',
+    title: 'AnTPDF — 100% In Browser PDF Studio',
     description:
       'Zero server uploads. Zero paywalls. Zero daily limits. Merge, split, compress, protect, and edit PDFs directly inside your browser memory.',
     url: BASE_URL,
-    siteName: 'AntPDF',
+    siteName: 'AnTPDF',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AntPDF — 100% In-Browser PDF Studio',
+    title: 'AnTPDF — 100% In Browser PDF Studio',
     description:
-      'Zero server uploads. Zero paywalls. Zero daily limits. 100% client-side in-browser WebAssembly PDF processing.',
+      'Zero server uploads. Zero paywalls. Zero daily limits. 100% client side in browser WebAssembly PDF processing.',
     creator: '@tanmayshinde',
   },
   robots: {

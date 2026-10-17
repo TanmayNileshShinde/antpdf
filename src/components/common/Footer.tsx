@@ -20,15 +20,15 @@ export function Footer() {
               <div className="w-8 h-8 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 flex items-center justify-center font-bold text-sm shadow-xs">
                 🐜
               </div>
-              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
-                AntPDF
+              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white" title="Antara & Tanmay PDF">
+                AnTPDF
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-surface-border text-muted">
                 Studio
               </span>
             </Link>
             <p className="text-xs text-muted leading-relaxed max-w-sm font-sans">
-              The zero server, zero knowledge in browser PDF studio.
+              The zero server, zero knowledge in browser PDF studio named after co creators Antara Parab &amp; Tanmay Nilesh Shinde.
               Every document executes 100% locally on your machine using
               WebAssembly. No remote cloud uploads, no daily paywalls, and no file size caps.
             </p>
@@ -145,7 +145,7 @@ export function Footer() {
         {/* Co-Authorship & Bottom Bar */}
         <div className="pt-8 mt-10 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
           <div className="flex items-center gap-2">
-            <span>© 2026 AntPDF &bull; Open source under MIT License</span>
+            <span>© 2026 AnTPDF &bull; Open source under MIT License</span>
           </div>
 
           <div className="flex items-center gap-1.5">

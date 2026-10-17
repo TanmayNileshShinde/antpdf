@@ -29,8 +29,8 @@ export function Navbar() {
                 <span>🐜</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-base tracking-tight text-slate-900 dark:text-white">
-                  AntPDF
+                <span className="font-bold text-base tracking-tight text-slate-900 dark:text-white" title="Antara & Tanmay PDF">
+                  AnTPDF
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 font-medium">
                   Studio

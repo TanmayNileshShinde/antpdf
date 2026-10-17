@@ -116,8 +116,8 @@ export async function compressPdf(
     doc.setAuthor('');
     doc.setSubject('');
     doc.setKeywords([]);
-    doc.setProducer('AntPDF (https://antpdf.tanmayshinde.com)');
-    doc.setCreator('AntPDF Client-Side Engine');
+    doc.setProducer('AnTPDF (https://antpdf.tanmayshinde.com)');
+    doc.setCreator('AnTPDF Client Side Engine');
   }
 
   // Save using modern Flate object stream compression

@@ -3,9 +3,9 @@ import { Shield, ServerOff } from 'lucide-react';
 import { BASE_URL } from '@/lib/seo/toolsData';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — 100% Zero-Server Guarantee | AntPDF',
+  title: 'Privacy Policy — 100% Zero-Server Guarantee | AnTPDF',
   description:
-    'AntPDF guarantees zero-knowledge client-side privacy. Your PDF documents are never uploaded to any remote server or cloud infrastructure.',
+    'AnTPDF guarantees zero-knowledge client-side privacy. Your PDF documents are never uploaded to any remote server or cloud infrastructure.',
   alternates: {
     canonical: `${BASE_URL}/privacy`,
   },
@@ -33,9 +33,9 @@ export default function PrivacyPage() {
           <span>The Core Zero-Server Guarantee</span>
         </h2>
         <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          At AntPDF, privacy is not a policy addendum — it is our fundamental architectural foundation.
+          At AnTPDF, privacy is not a policy addendum — it is our fundamental architectural foundation.
           Unlike legacy cloud PDF processors (such as iLovePDF, Smallpdf, Adobe Cloud),
-          <strong> AntPDF does not possess or operate any file-processing backend servers.</strong>
+          <strong> AnTPDF does not possess or operate any file-processing backend servers.</strong>
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             1. Where Are My Files Processed?
           </h2>
           <p>
-            When you select or drop a PDF into AntPDF, the file is read directly into your
+            When you select or drop a PDF into AnTPDF, the file is read directly into your
             computer&apos;s or mobile phone&apos;s RAM (Random Access Memory). All operations — including
             merging, splitting, rotating, encrypting, compressing, watermarking, and flattening — are
             executed locally by your web browser using WebAssembly and pure client-side JavaScript.
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
             3. Document Retention &amp; Storage
           </h2>
           <p>
-            Because no document is ever received by AntPDF servers, there are zero databases, zero cloud buckets (S3),
+            Because no document is ever received by AnTPDF servers, there are zero databases, zero cloud buckets (S3),
             and zero caches storing your files. Closing the browser tab instantly flushes all document data from your device RAM.
           </p>
         </section>
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
             4. Telemetry and Analytics
           </h2>
           <p>
-            AntPDF does not use intrusive third-party trackers, cross-site cookies, or fingerprinting scripts.
+            AnTPDF does not use intrusive third-party trackers, cross-site cookies, or fingerprinting scripts.
             Any standard hosting analytics (e.g. Vercel web vitals) measure aggregate page views without capturing personal data.
           </p>
         </section>

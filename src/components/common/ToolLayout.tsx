@@ -123,14 +123,14 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
           </div>
         </section>
 
-        {/* Comparison Callout: AntPDF vs iLovePDF / Smallpdf */}
+        {/* Comparison Callout: AnTPDF vs iLovePDF / Smallpdf */}
         <section className="py-14 max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
           <div className="text-center space-y-1.5">
             <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-500">
               Architecture Analysis
             </span>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-              AntPDF vs Cloud Converters
+              AnTPDF vs Cloud Converters
             </h2>
           </div>
 
@@ -139,7 +139,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
               <thead>
                 <tr className="border-b border-surface-border bg-slate-100/50 dark:bg-white/5 font-mono text-[11px] uppercase tracking-wider text-muted">
                   <th className="p-3.5 font-semibold">Capability</th>
-                  <th className="p-3.5 font-bold text-indigo-500">AntPDF Client Studio</th>
+                  <th className="p-3.5 font-bold text-indigo-500">AnTPDF Client Studio</th>
                   <th className="p-3.5 font-semibold text-muted">Legacy Cloud Services</th>
                 </tr>
               </thead>

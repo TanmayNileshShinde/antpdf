@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { BASE_URL } from '@/lib/seo/toolsData';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | AntPDF',
+  title: 'Terms of Service | AnTPDF',
   description:
-    'Terms of Service for using AntPDF — the open-source, client-side PDF studio.',
+    'Terms of Service for using AnTPDF — the open-source, client-side PDF studio.',
   alternates: {
     canonical: `${BASE_URL}/terms`,
   },
@@ -28,7 +28,7 @@ export default function TermsPage() {
             1. Acceptance of Terms
           </h2>
           <p>
-            By accessing and using AntPDF (https://antpdf.tanmayshinde.com), you agree to be bound by these
+            By accessing and using AnTPDF (https://antpdf.tanmayshinde.com), you agree to be bound by these
             Terms of Service. If you do not agree to these terms, you should discontinue using the application.
           </p>
         </section>
@@ -38,7 +38,7 @@ export default function TermsPage() {
             2. Open Source License (MIT)
           </h2>
           <p>
-            AntPDF is open-source software authored collaboratively by Tanmay Nilesh Shinde and Antara Parab.
+            AnTPDF is open-source software authored collaboratively by Tanmay Nilesh Shinde and Antara Parab.
             The source code is licensed under the MIT License and hosted publicly on GitHub.
           </p>
         </section>
@@ -48,7 +48,7 @@ export default function TermsPage() {
             3. Disclaimer of Warranties
           </h2>
           <p>
-            AntPDF is provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind, either express or implied.
+            AnTPDF is provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind, either express or implied.
             While every effort has been made to ensure standard PDF compliance and data integrity, you are advised to maintain
             original backup copies of important documents.
           </p>
@@ -59,7 +59,7 @@ export default function TermsPage() {
             4. Permitted Use
           </h2>
           <p>
-            You agree to use AntPDF only for lawful purposes. You must have appropriate rights and authorization
+            You agree to use AnTPDF only for lawful purposes. You must have appropriate rights and authorization
             to access, merge, split, encrypt, or decrypt any documents you process with this service.
           </p>
         </section>

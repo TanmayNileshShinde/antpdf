@@ -7,7 +7,7 @@ export default function HomePage() {
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'AntPDF',
+    name: 'AnTPDF',
     url: BASE_URL,
     description:
       'Zero server, zero knowledge in browser PDF studio. Merge, split, compress, protect, unlock, rotate, and watermark PDFs 100% locally on your device.',
@@ -141,7 +141,7 @@ export default function HomePage() {
             </h2>
             <p className="text-xs sm:text-sm text-muted leading-relaxed">
               Cloud converters force you to upload personal documents to their infrastructure.
-              AntPDF runs directly on your hardware.
+              AnTPDF runs directly on your hardware.
             </p>
           </div>
 
@@ -181,7 +181,7 @@ export default function HomePage() {
               </h3>
               <p className="text-xs text-muted leading-relaxed">
                 Because there are zero server processing costs on Vercel,
-                AntPDF does not throttle users with paid subscriptions or daily task limits.
+                AnTPDF does not throttle users with paid subscriptions or daily task limits.
               </p>
             </div>
           </div>

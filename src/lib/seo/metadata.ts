@@ -9,8 +9,8 @@ export function generateToolMetadata(slug: string): Metadata {
 
   if (!tool) {
     return {
-      title: 'Tool Not Found | AntPDF',
-      description: 'The requested PDF tool was not found on AntPDF.',
+      title: 'Tool Not Found | AnTPDF',
+      description: 'The requested PDF tool was not found on AnTPDF.',
     };
   }
 
@@ -27,7 +27,7 @@ export function generateToolMetadata(slug: string): Metadata {
       { name: 'Antara Parab' },
     ],
     creator: 'Tanmay Nilesh Shinde',
-    publisher: 'AntPDF',
+    publisher: 'AnTPDF',
     alternates: {
       canonical: canonicalUrl,
     },
@@ -35,7 +35,7 @@ export function generateToolMetadata(slug: string): Metadata {
       title: tool.metaTitle,
       description: tool.metaDescription,
       url: canonicalUrl,
-      siteName: 'AntPDF',
+      siteName: 'AnTPDF',
       type: 'website',
       locale: 'en_US',
       images: [
@@ -43,7 +43,7 @@ export function generateToolMetadata(slug: string): Metadata {
           url: `${BASE_URL}/og/${slug}.png`,
           width: 1200,
           height: 630,
-          alt: `${tool.name} — AntPDF In-Browser Studio`,
+          alt: `${tool.name} — AnTPDF In Browser Studio`,
         },
       ],
     },
@@ -81,7 +81,7 @@ export function generateToolJsonLd(slug: string) {
   const webAppSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: `AntPDF - ${tool.name}`,
+    name: `AnTPDF - ${tool.name}`,
     url: toolUrl,
     description: tool.metaDescription,
     applicationCategory: 'UtilitiesApplication',

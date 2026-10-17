@@ -37,12 +37,12 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'merge-pdf',
     slug: 'merge-pdf',
     name: 'Merge PDF',
-    metaTitle: 'Merge PDF Online Free — Combine Multiple PDF Files | AntPDF',
+    metaTitle: 'Merge PDF Online Free — Combine Multiple PDF Files | AnTPDF',
     metaDescription:
       'Merge multiple PDF documents into one single file directly in your browser. 100% client-side, zero server uploads, no file size limits, completely free.',
     shortDescription: 'Combine multiple PDFs into a unified document in your exact order.',
     longDescription:
-      'Combine multiple PDF documents into a clean, unified file in seconds. AntPDF processes your files entirely in-memory on your device using WebAssembly and pdf-lib — meaning your documents are never uploaded to any remote server.',
+      'Combine multiple PDF documents into a clean, unified file in seconds. AnTPDF processes your files entirely in-memory on your device using WebAssembly and pdf-lib — meaning your documents are never uploaded to any remote server.',
     category: 'organize',
     icon: 'Layers',
     author: 'Tanmay',
@@ -79,12 +79,12 @@ export const TOOLS: Record<string, ToolDefinition> = {
       {
         question: 'Are my files uploaded to any server when merging?',
         answer:
-          'No! Unlike iLovePDF or Smallpdf, AntPDF executes 100% of the PDF merging process locally in your browser memory using WebAssembly. Your files never leave your computer or touch a cloud server.',
+          'No! Unlike iLovePDF or Smallpdf, AnTPDF executes 100% of the PDF merging process locally in your browser memory using WebAssembly. Your files never leave your computer or touch a cloud server.',
       },
       {
         question: 'Is there any file size or document limit?',
         answer:
-          'There are zero artificial file size limits or daily quotas on AntPDF. Because processing occurs on your device, you can merge as many pages or large files as your browser memory permits.',
+          'There are zero artificial file size limits or daily quotas on AnTPDF. Because processing occurs on your device, you can merge as many pages or large files as your browser memory permits.',
       },
       {
         question: 'Will the original quality or hyperlinks be preserved?',
@@ -105,7 +105,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'split-pdf',
     slug: 'split-pdf',
     name: 'Split PDF',
-    metaTitle: 'Split PDF Online Free — Extract Pages & Ranges | AntPDF',
+    metaTitle: 'Split PDF Online Free — Extract Pages & Ranges | AnTPDF',
     metaDescription:
       'Extract specific pages or page ranges from any PDF document for free. 100% client-side privacy, blazing fast WebAssembly processing, zero server uploads.',
     shortDescription: 'Extract specific pages or ranges (e.g. 1-3, 5, 8) into a fresh PDF.',
@@ -146,12 +146,12 @@ export const TOOLS: Record<string, ToolDefinition> = {
       {
         question: 'How do I specify multiple page ranges?',
         answer:
-          'You can type comma-separated values like "1-3, 5, 8-12". AntPDF extracts exactly those pages in sequential order.',
+          'You can type comma-separated values like "1-3, 5, 8-12". AnTPDF extracts exactly those pages in sequential order.',
       },
       {
         question: 'Does splitting affect the resolution of images in the PDF?',
         answer:
-          'No. AntPDF performs lossless extraction of the original PDF stream objects, preserving exact DPI and vector quality.',
+          'No. AnTPDF performs lossless extraction of the original PDF stream objects, preserving exact DPI and vector quality.',
       },
       {
         question: 'Can I split password-protected PDFs?',
@@ -172,12 +172,12 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'compress-pdf',
     slug: 'compress-pdf',
     name: 'Compress PDF',
-    metaTitle: 'Compress PDF Online Free — Reduce File Size Privately | AntPDF',
+    metaTitle: 'Compress PDF Online Free — Reduce File Size Privately | AnTPDF',
     metaDescription:
       'Reduce PDF file size in your browser without sacrificing legibility. 100% private, no server upload, zero cost, no file size limitations.',
     shortDescription: 'Optimize and reduce PDF file size while maintaining clarity.',
     longDescription:
-      'Shrink bulky PDF files for easy email attachments and web distribution. AntPDF optimizes object cross-reference tables, strips bloated structural metadata, and cleans redundant dictionary streams entirely in your browser.',
+      'Shrink bulky PDF files for easy email attachments and web distribution. AnTPDF optimizes object cross-reference tables, strips bloated structural metadata, and cleans redundant dictionary streams entirely in your browser.',
     category: 'optimize',
     icon: 'Minimize2',
     author: 'Tanmay',
@@ -211,9 +211,9 @@ export const TOOLS: Record<string, ToolDefinition> = {
     ],
     faqs: [
       {
-        question: 'How does AntPDF compress files without a server?',
+        question: 'How does AnTPDF compress files without a server?',
         answer:
-          'AntPDF utilizes pdf-lib with Flate object streams and dictionary compaction directly within browser WebAssembly, stripping obsolete revision trees and metadata.',
+          'AnTPDF utilizes pdf-lib with Flate object streams and dictionary compaction directly within browser WebAssembly, stripping obsolete revision trees and metadata.',
       },
       {
         question: 'Will text remain sharp and readable?',
@@ -239,7 +239,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'protect-pdf',
     slug: 'protect-pdf',
     name: 'Protect PDF',
-    metaTitle: 'Password Protect PDF Online — Encrypt PDF Free | AntPDF',
+    metaTitle: 'Password Protect PDF Online — Encrypt PDF Free | AnTPDF',
     metaDescription:
       'Add secure 128-bit password encryption to sensitive PDF documents in your browser. Zero-knowledge privacy: your password and files never touch a server.',
     shortDescription: 'Lock and encrypt your PDF with strong 128-bit password protection.',
@@ -278,9 +278,9 @@ export const TOOLS: Record<string, ToolDefinition> = {
     ],
     faqs: [
       {
-        question: 'Does AntPDF or anyone else know my password?',
+        question: 'Does AnTPDF or anyone else know my password?',
         answer:
-          'Impossible. The encryption cipher is executed strictly inside your local browser runtime. AntPDF has no database, no backend server, and zero tracking.',
+          'Impossible. The encryption cipher is executed strictly inside your local browser runtime. AnTPDF has no database, no backend server, and zero tracking.',
       },
       {
         question: 'What encryption algorithm is used?',
@@ -290,7 +290,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
       {
         question: 'What if I forget my password?',
         answer:
-          'Because AntPDF uses true cryptographic protection and zero server storage, forgotten passwords cannot be recovered.',
+          'Because AnTPDF uses true cryptographic protection and zero server storage, forgotten passwords cannot be recovered.',
       },
     ],
     features: [
@@ -306,7 +306,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'unlock-pdf',
     slug: 'unlock-pdf',
     name: 'Unlock PDF',
-    metaTitle: 'Unlock PDF Online Free — Remove Password Protection | AntPDF',
+    metaTitle: 'Unlock PDF Online Free — Remove Password Protection | AnTPDF',
     metaDescription:
       'Remove password protection and permission restrictions from PDF files directly in your browser. Free, fast, and 100% client-side.',
     shortDescription: 'Strip password locks and restrictions from your authorized PDF files.',
@@ -345,7 +345,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     ],
     faqs: [
       {
-        question: 'Can AntPDF unlock any PDF without knowing the password?',
+        question: 'Can AnTPDF unlock any PDF without knowing the password?',
         answer:
           'Standard permission restrictions (such as printing or editing locks) can be removed instantly. For owner/user encrypted files, providing the correct key allows permanent decryption.',
       },
@@ -373,7 +373,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'rotate-pdf',
     slug: 'rotate-pdf',
     name: 'Rotate PDF',
-    metaTitle: 'Rotate PDF Pages Permanently Online — 90°, 180°, 270° | AntPDF',
+    metaTitle: 'Rotate PDF Pages Permanently Online — 90°, 180°, 270° | AnTPDF',
     metaDescription:
       'Permanently fix upside-down or sideways PDF pages online for free. Rotate 90, 180, or 270 degrees in-browser with zero quality loss.',
     shortDescription: 'Permanently rotate upside-down or sideways pages by 90°, 180°, or 270°.',
@@ -414,7 +414,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
       {
         question: 'Is this rotation permanent?',
         answer:
-          'Yes. Unlike temporary viewer toggles in browser tabs, AntPDF writes the rotation angle directly into the PDF page dictionary so it opens correctly everywhere.',
+          'Yes. Unlike temporary viewer toggles in browser tabs, AnTPDF writes the rotation angle directly into the PDF page dictionary so it opens correctly everywhere.',
       },
       {
         question: 'Can I rotate only odd or specific pages?',
@@ -424,7 +424,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
       {
         question: 'Does rotating degrade scanned images?',
         answer:
-          'Zero degradation. AntPDF only changes the vector orientation matrix without re-compressing raster images.',
+          'Zero degradation. AnTPDF only changes the vector orientation matrix without re-compressing raster images.',
       },
     ],
     features: [
@@ -440,7 +440,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'add-page-numbers',
     slug: 'add-page-numbers',
     name: 'Add Page Numbers',
-    metaTitle: 'Add Page Numbers to PDF Online Free — Number PDF Pages | AntPDF',
+    metaTitle: 'Add Page Numbers to PDF Online Free — Number PDF Pages | AnTPDF',
     metaDescription:
       'Stamp clean page numbers onto your PDF documents in seconds. Custom positions, fonts, numbering formats ("Page X of Y"), and starting numbers.',
     shortDescription: 'Add page numbers with custom positions, styling, and formatting.',
@@ -507,7 +507,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'watermark-pdf',
     slug: 'watermark-pdf',
     name: 'Watermark PDF',
-    metaTitle: 'Add Watermark to PDF Online Free — Text Watermark Tool | AntPDF',
+    metaTitle: 'Add Watermark to PDF Online Free — Text Watermark Tool | AnTPDF',
     metaDescription:
       'Protect your PDF files with diagonal text watermarks ("CONFIDENTIAL", "DRAFT", "COPY"). Customize opacity, angle, and size with 100% client-side privacy.',
     shortDescription: 'Stamp diagonal text watermarks (e.g. DRAFT, CONFIDENTIAL) with opacity.',
@@ -574,7 +574,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'flatten-pdf',
     slug: 'flatten-pdf',
     name: 'Flatten PDF',
-    metaTitle: 'Flatten PDF Form Fields Online Free — Lock Annotations | AntPDF',
+    metaTitle: 'Flatten PDF Form Fields Online Free — Lock Annotations | AnTPDF',
     metaDescription:
       'Flatten interactive AcroForms, form fields, and annotations into static PDF pages. Prevent accidental editing and ensure uniform printing across devices.',
     shortDescription: 'Lock and flatten form fields and annotations into static pages.',
@@ -602,7 +602,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
         step: 2,
         title: 'Verify Form Integrity',
         description:
-          'AntPDF inspects the document AcroForm dictionary in memory.',
+          'AnTPDF inspects the document AcroForm dictionary in memory.',
       },
       {
         step: 3,
@@ -642,7 +642,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'organize-pdf',
     slug: 'organize-pdf',
     name: 'Organize PDF',
-    metaTitle: 'Organize PDF Pages Online — Visual Drag and Drop | AntPDF',
+    metaTitle: 'Organize PDF Pages Online — Visual Drag and Drop | AnTPDF',
     metaDescription:
       'Reorder, sort, and arrange PDF pages visually with interactive drag and drop. 100% client-side privacy, free with zero server uploads.',
     shortDescription: 'Drag-and-drop visual page sorter to reorder document pages easily.',
@@ -672,7 +672,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'remove-pages',
     slug: 'remove-pages',
     name: 'Remove Pages',
-    metaTitle: 'Remove Pages from PDF Online Free — Visual Page Deleter | AntPDF',
+    metaTitle: 'Remove Pages from PDF Online Free — Visual Page Deleter | AnTPDF',
     metaDescription:
       'Delete unwanted pages from PDF files with a single click. Interactive thumbnail preview, 100% private in-browser tool.',
     shortDescription: 'Click-to-delete visual page remover for effortless document cleanup.',
@@ -702,7 +702,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'pdf-to-jpg',
     slug: 'pdf-to-jpg',
     name: 'PDF to JPG',
-    metaTitle: 'PDF to JPG Converter Online Free — High Resolution Images | AntPDF',
+    metaTitle: 'PDF to JPG Converter Online Free — High Resolution Images | AnTPDF',
     metaDescription:
       'Convert PDF pages into high-resolution JPG images directly in your browser. 100% client-side privacy, free with zero server uploads.',
     shortDescription: 'Extract high-resolution JPG images from every page of your PDF.',
@@ -732,7 +732,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'pdf-to-png',
     slug: 'pdf-to-png',
     name: 'PDF to PNG',
-    metaTitle: 'PDF to PNG Converter Online Free — Transparent & Lossless | AntPDF',
+    metaTitle: 'PDF to PNG Converter Online Free — Transparent & Lossless | AnTPDF',
     metaDescription:
       'Extract PDF pages to lossless transparent PNG images in your browser. Free, unlimited, and 100% private.',
     shortDescription: 'Export lossless PNG pictures from PDF pages with crystal clarity.',
@@ -762,7 +762,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'jpg-to-pdf',
     slug: 'jpg-to-pdf',
     name: 'JPG to PDF',
-    metaTitle: 'JPG to PDF Converter Online Free — Images to Document | AntPDF',
+    metaTitle: 'JPG to PDF Converter Online Free — Images to Document | AnTPDF',
     metaDescription:
       'Convert JPG and PNG photos into a beautiful PDF document in seconds. 100% client-side privacy, free with no file size limits.',
     shortDescription: 'Combine multiple JPG/PNG images into a single professional PDF.',
@@ -792,7 +792,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'word-to-pdf',
     slug: 'word-to-pdf',
     name: 'Word to PDF',
-    metaTitle: 'Word to PDF Converter Online Free — Convert DOCX to PDF | AntPDF',
+    metaTitle: 'Word to PDF Converter Online Free — Convert DOCX to PDF | AnTPDF',
     metaDescription:
       'Convert Word .docx documents to PDF format directly in your browser. Fast, free, and zero server uploads.',
     shortDescription: 'Convert Microsoft Word (.docx) files into clean, shareable PDFs.',
@@ -811,7 +811,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     faqs: [
       {
         question: 'Is Microsoft Office required?',
-        answer: 'No, AntPDF uses in-browser HTML5 and canvas transcoder engines.',
+        answer: 'No, AnTPDF uses in-browser HTML5 and canvas transcoder engines.',
       },
     ],
     features: ['DOCX parsing', 'Zero cloud upload', 'Free and unlimited'],
@@ -822,7 +822,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'pdf-to-word',
     slug: 'pdf-to-word',
     name: 'PDF to Word',
-    metaTitle: 'PDF to Word Converter Online Free — Convert PDF to DOCX | AntPDF',
+    metaTitle: 'PDF to Word Converter Online Free — Convert PDF to DOCX | AnTPDF',
     metaDescription:
       'Convert PDF documents to editable Microsoft Word .docx files in your browser. Free, secure, zero server uploads.',
     shortDescription: 'Convert PDF files into editable Microsoft Word (.docx) documents.',
@@ -852,7 +852,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     id: 'sign-pdf',
     slug: 'sign-pdf',
     name: 'Sign PDF',
-    metaTitle: 'Sign PDF Online Free — Digital Signature Canvas | AntPDF',
+    metaTitle: 'Sign PDF Online Free — Digital Signature Canvas | AnTPDF',
     metaDescription:
       'Draw, create, and stamp your digital signature onto PDF documents directly in your browser. 100% private, free, and legally ready.',
     shortDescription: 'Draw or upload your digital signature to stamp documents quickly.',

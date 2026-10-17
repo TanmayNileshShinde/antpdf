@@ -27,7 +27,7 @@ async function createTestPdfFile(name: string, pageCount: number = 2): Promise<F
   return new File([bytes.buffer as ArrayBuffer], name, { type: 'application/pdf' });
 }
 
-describe('AntPDF Core Client-Side Engine Tests', () => {
+describe('AnTPDF Core Client-Side Engine Tests', () => {
   it('formats bytes properly into human-readable strings', () => {
     expect(formatBytes(0)).toBe('0 Bytes');
     expect(formatBytes(1024)).toBe('1 KB');
@@ -89,7 +89,7 @@ describe('AntPDF Core Client-Side Engine Tests', () => {
 
   it('encrypts / protects PDF with user password and unlocks it', async () => {
     const file = await createTestPdfFile('doc.pdf', 2);
-    const protectedBlob = await protectPdf(file, 'AntPDF_Secret_2026');
+    const protectedBlob = await protectPdf(file, 'AnTPDF_Secret_2026');
 
     expect(protectedBlob).toBeInstanceOf(Blob);
     const encryptedBuffer = await protectedBlob.arrayBuffer();
@@ -102,7 +102,7 @@ describe('AntPDF Core Client-Side Engine Tests', () => {
     const protectedFile = new File([encryptedBuffer], 'protected.pdf', {
       type: 'application/pdf',
     });
-    const unlockedBlob = await unlockPdf(protectedFile, 'AntPDF_Secret_2026');
+    const unlockedBlob = await unlockPdf(protectedFile, 'AnTPDF_Secret_2026');
     const unlockedBuffer = await unlockedBlob.arrayBuffer();
 
     // Verify unlocked PDF can be parsed normally without ignoreEncryption
