@@ -12,11 +12,18 @@ export default function HomePage() {
     url: BASE_URL,
     description:
       'Zero server, zero knowledge in browser PDF studio. Merge, split, compress, protect, unlock, rotate, and watermark PDFs 100% locally on your device.',
-    author: {
-      '@type': 'Person',
-      name: 'Tanmay Shinde',
-      url: 'https://tanmayshinde.com',
-    },
+    author: [
+      {
+        '@type': 'Person',
+        name: 'Tanmay Shinde',
+        url: 'https://tanmayshinde.com',
+      },
+      {
+        '@type': 'Person',
+        name: 'Antara Parab',
+        url: 'https://github.com/Antara-Parab',
+      },
+    ],
     potentialAction: {
       '@type': 'SearchAction',
       target: `${BASE_URL}/#tools-grid`,

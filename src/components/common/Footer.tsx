@@ -139,14 +139,24 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span>Engineered by</span>
-            <span className="font-semibold text-slate-900 dark:text-white">
+            <span>Engineered with ❤️ by</span>
+            <Link
+              href="https://github.com/TanmayNileshShinde"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-slate-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+            >
               Tanmay Shinde
-            </span>
+            </Link>
             <span>&</span>
-            <span className="font-semibold text-slate-900 dark:text-white">
+            <Link
+              href="https://github.com/Antara-Parab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-slate-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+            >
               Antara Parab
-            </span>
+            </Link>
           </div>
         </div>
       </div>
