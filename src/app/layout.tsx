@@ -60,6 +60,13 @@ export const metadata: Metadata = {
       'Zero server uploads. Zero paywalls. Zero daily limits. 100% client side in browser WebAssembly PDF processing.',
     creator: '@tanmayshinde',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
+  },
   robots: {
     index: true,
     follow: true,

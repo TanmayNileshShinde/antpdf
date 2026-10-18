@@ -11,6 +11,7 @@ import {
   Search,
 } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { BrandLogo } from './BrandLogo';
 import { ALL_TOOLS_LIST } from '@/lib/seo/toolsData';
 
 export function Navbar() {
@@ -23,18 +24,8 @@ export function Navbar() {
         <div className="flex items-center justify-between h-14">
           {/* Brand Mark and Identity */}
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
-                <span>🐜</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-base tracking-tight text-slate-900 dark:text-white" title="Antara & Tanmay PDF">
-                  AnTPDF
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 font-medium">
-                  Studio
-                </span>
-              </div>
+            <Link href="/" className="inline-flex items-center">
+              <BrandLogo size="md" />
             </Link>
 
             {/* Desktop Navigation Links */}

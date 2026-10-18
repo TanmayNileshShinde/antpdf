@@ -1,0 +1,39 @@
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="antpdf-icon-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="55%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="antpdf-icon-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#EEF2FF" />
+    </linearGradient>
+    <linearGradient id="antpdf-icon-right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0E7FF" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#C7D2FE" stop-opacity="0.85" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Squircle -->
+  <rect width="40" height="40" rx="10" fill="url(#antpdf-icon-bg)" />
+  <rect x="0.75" y="0.75" width="38.5" height="38.5" rx="9.25" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" />
+
+  <!-- Antennae -->
+  <path d="M 17.5 11.5 L 12 5.5" stroke="#E0E7FF" stroke-width="2.2" stroke-linecap="round" />
+  <circle cx="12" cy="5.5" r="1.5" fill="#FFFFFF" />
+  <path d="M 22.5 11.5 L 28 5.5" stroke="#E0E7FF" stroke-width="2.2" stroke-linecap="round" />
+  <circle cx="28" cy="5.5" r="1.5" fill="#FFFFFF" />
+
+  <!-- Left Facet -->
+  <path d="M 20 11 L 9.5 32 H 15.2 L 17 27 H 20 V 17 L 20 11 Z" fill="url(#antpdf-icon-left)" />
+
+  <!-- Right Facet -->
+  <path d="M 20 11 V 17 L 20 27 H 23 L 24.8 32 H 30.5 L 20 11 Z" fill="url(#antpdf-icon-right)" />
+
+  <!-- Crossbar -->
+  <polygon points="15.8,27 24.2,27 22.4,24 17.6,24" fill="#FFFFFF" opacity="0.9" />
+
+  <!-- WASM Core Node -->
+  <circle cx="20" cy="20.5" r="1.35" fill="#10B981" />
+</svg>

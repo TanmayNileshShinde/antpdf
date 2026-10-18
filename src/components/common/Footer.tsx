@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Shield } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 import { ALL_TOOLS_LIST } from '@/lib/seo/toolsData';
 
 export function Footer() {
@@ -15,16 +16,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand & Manifesto Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 flex items-center justify-center font-bold text-sm shadow-xs">
-                🐜
-              </div>
-              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white" title="Antara & Tanmay PDF">
-                AnTPDF
-              </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-surface-border text-muted">
-                Studio
-              </span>
+            <Link href="/" className="inline-flex items-center">
+              <BrandLogo size="md" />
             </Link>
             <p className="text-xs text-muted leading-relaxed max-w-sm font-sans">
               The zero server, zero knowledge in browser PDF studio named after co creators Antara Parab &amp; Tanmay Shinde.
