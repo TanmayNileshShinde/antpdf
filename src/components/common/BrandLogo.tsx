@@ -33,38 +33,25 @@ export function BrandLogoIcon({ size = 32, className = '' }: { size?: number; cl
         viewBox="0 0 40 40"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-[0_2px_8px_rgba(99,102,241,0.28)] transition-transform duration-200 group-hover/icon:scale-105"
+        className="w-full h-full drop-shadow-[0_2px_8px_rgba(99,102,241,0.32)] transition-transform duration-200 group-hover/icon:scale-105"
       >
         <defs>
           {/* Main Brand Squircle Gradient */}
-          <linearGradient id="antpdf-bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="antpdf-ant-bg" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#6366F1" />
             <stop offset="55%" stopColor="#4F46E5" />
             <stop offset="100%" stopColor="#7C3AED" />
           </linearGradient>
 
-          {/* Left Wing Facet (Brilliant Light) */}
-          <linearGradient id="antpdf-left-facet" x1="0%" y1="0%" x2="100%" y2="100%">
+          {/* Ant Body Highlight */}
+          <linearGradient id="antpdf-body-grad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#FFFFFF" />
             <stop offset="100%" stopColor="#EEF2FF" />
           </linearGradient>
-
-          {/* Right Folded Paper Facet (Layered Depth) */}
-          <linearGradient id="antpdf-right-facet" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#E0E7FF" stopOpacity="0.95" />
-            <stop offset="100%" stopColor="#C7D2FE" stopOpacity="0.85" />
-          </linearGradient>
-
-          {/* Subtle Ambient Bottom Shadow */}
-          <radialGradient id="antpdf-bottom-glow" cx="50%" cy="100%" r="60%">
-            <stop offset="0%" stopColor="#4338CA" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#4338CA" stopOpacity="0" />
-          </radialGradient>
         </defs>
 
         {/* Base Squircle Container */}
-        <rect width="40" height="40" rx="10" fill="url(#antpdf-bg-gradient)" />
-        <rect width="40" height="40" rx="10" fill="url(#antpdf-bottom-glow)" />
+        <rect width="40" height="40" rx="10" fill="url(#antpdf-ant-bg)" />
 
         {/* Inner Precision Border */}
         <rect
@@ -74,49 +61,124 @@ export function BrandLogoIcon({ size = 32, className = '' }: { size?: number; cl
           height="38.5"
           rx="9.25"
           fill="none"
-          stroke="rgba(255, 255, 255, 0.28)"
+          stroke="rgba(255, 255, 255, 0.3)"
           strokeWidth="1.2"
         />
 
-        {/* Aerodynamic Ant Antennae with Vector Precision */}
+        {/* The 6 Dynamic Ant Legs */}
+        {/* Front Legs */}
         <path
-          d="M 17.5 11.5 L 12 5.5"
-          stroke="#E0E7FF"
-          strokeWidth="2.2"
+          d="M 17.5 16 L 12 12.5 L 8 9"
+          stroke="#FFFFFF"
+          strokeWidth="1.7"
           strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
         />
-        <circle cx="12" cy="5.5" r="1.5" fill="#FFFFFF" />
-
         <path
-          d="M 22.5 11.5 L 28 5.5"
-          stroke="#E0E7FF"
-          strokeWidth="2.2"
+          d="M 22.5 16 L 28 12.5 L 32 9"
+          stroke="#FFFFFF"
+          strokeWidth="1.7"
           strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
         />
-        <circle cx="28" cy="5.5" r="1.5" fill="#FFFFFF" />
 
-        {/* Monogram A / Folded PDF Left Facet */}
+        {/* Middle Legs */}
         <path
-          d="M 20 11 L 9.5 32 H 15.2 L 17 27 H 20 V 17 L 20 11 Z"
-          fill="url(#antpdf-left-facet)"
+          d="M 17 17.5 L 10 18 L 6.5 21.5"
+          stroke="#FFFFFF"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
         />
-
-        {/* Monogram A / Folded PDF Right Overlap Facet */}
         <path
-          d="M 20 11 V 17 L 20 27 H 23 L 24.8 32 H 30.5 L 20 11 Z"
-          fill="url(#antpdf-right-facet)"
+          d="M 23 17.5 L 30 18 L 33.5 21.5"
+          stroke="#FFFFFF"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
         />
 
-        {/* Geometric Crossbar Bridge */}
-        <polygon
-          points="15.8,27 24.2,27 22.4,24 17.6,24"
-          fill="#FFFFFF"
-          opacity="0.9"
+        {/* Rear Legs */}
+        <path
+          d="M 17.5 19 L 11 23 L 8.5 29.5"
+          stroke="#FFFFFF"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path
+          d="M 22.5 19 L 29 23 L 31.5 29.5"
+          stroke="#FFFFFF"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
         />
 
-        {/* Client-side WASM Heartbeat Verification Node */}
-        <circle cx="20" cy="20.5" r="1.35" fill="#10B981" />
-        <circle cx="20" cy="20.5" r="2.8" fill="#10B981" opacity="0.3" />
+        {/* Curved Expressive Antennae with Glowing Nodes */}
+        <path
+          d="M 18.5 9.5 C 16.5 6 13 4.8 9.5 5.5"
+          stroke="#FFFFFF"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <circle cx="9.5" cy="5.5" r="1.3" fill="#FFFFFF" />
+
+        <path
+          d="M 21.5 9.5 C 23.5 6 27 4.8 30.5 5.5"
+          stroke="#FFFFFF"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <circle cx="30.5" cy="5.5" r="1.3" fill="#FFFFFF" />
+
+        {/* Ant Mandibles */}
+        <path d="M 18.5 7.5 L 17 5.8" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M 21.5 7.5 L 23 5.8" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" />
+
+        {/* Ant Head */}
+        <path
+          d="M 16.8 10.5 C 16.8 8.2 18.2 6.8 20 6.8 C 21.8 6.8 23.2 8.2 23.2 10.5 C 23.2 12.8 21.8 14 20 14 C 18.2 14 16.8 12.8 16.8 10.5 Z"
+          fill="url(#antpdf-body-grad)"
+        />
+
+        {/* Ant Thorax */}
+        <ellipse cx="20" cy="17.2" rx="3.3" ry="2.7" fill="url(#antpdf-body-grad)" />
+
+        {/* Emerald WASM Core on Thorax */}
+        <circle cx="20" cy="17.2" r="1.1" fill="#10B981" />
+
+        {/* Ant Petiole (Thin Waist Node) */}
+        <circle cx="20" cy="20.8" r="1.4" fill="url(#antpdf-body-grad)" />
+
+        {/* Ant Abdomen (Large Iconic Gaster) */}
+        <path
+          d="M 20 22.5 C 16.2 22.5 14.2 25.5 14.2 29 C 14.2 32.8 16.8 35.2 20 35.2 C 23.2 35.2 25.8 32.8 25.8 29 C 25.8 25.5 23.8 22.5 20 22.5 Z"
+          fill="url(#antpdf-body-grad)"
+        />
+
+        {/* Document Page / Abdominal Segment Grooves */}
+        <path
+          d="M 16.2 27.5 Q 20 29.2 23.8 27.5"
+          stroke="#4F46E5"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <path
+          d="M 16.8 30.5 Q 20 32.2 23.2 30.5"
+          stroke="#4F46E5"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          fill="none"
+        />
       </svg>
     </div>
   );
