@@ -121,7 +121,12 @@ export function Navbar() {
             {/* Command palette search trigger */}
             <Link
               href="/#tools-grid"
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-surface-border bg-slate-100/60 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-xs text-muted hover:text-slate-900 dark:hover:text-white transition-all"
+              onClick={() => {
+                setTimeout(() => {
+                  document.getElementById('studio-search-input')?.focus();
+                }, 50);
+              }}
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-surface-border bg-slate-100/60 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-xs text-muted hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
             >
               <Search className="w-3.5 h-3.5" />
               <span>Search tools</span>
