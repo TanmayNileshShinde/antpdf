@@ -1,5 +1,6 @@
 # AnTPDF — 100% In-Browser PDF Studio with Programmatic SEO
 
+[![GitHub stars](https://img.shields.io/github/stars/TanmayNileshShinde/antpdf.svg?style=flat&color=yellow)](https://github.com/TanmayNileshShinde/antpdf/stargazers)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)](https://nextjs.org/)
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](https://antpdf.tanmayshinde.com/terms)
 [![Privacy: Zero Server Uploads](https://img.shields.io/badge/Privacy-100%25%20In--Browser-emerald)](https://antpdf.tanmayshinde.com/privacy)
