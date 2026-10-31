@@ -640,7 +640,7 @@ export const TOOLS: Record<string, ToolDefinition> = {
     isAvailable: true,
   },
 
-  // Interactive Canvas Studio Tools with full pSEO metadata:
+  // canvas tools
   'organize-pdf': {
     id: 'organize-pdf',
     slug: 'organize-pdf',

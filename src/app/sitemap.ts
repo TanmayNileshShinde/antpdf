@@ -4,7 +4,7 @@ import { BASE_URL, ALL_TOOLS_LIST } from '@/lib/seo/toolsData';
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date('2026-10-17T00:00:00.000Z');
 
-  // Root Homepage
+  // root page
   const routes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // All 18+ PDF Tools
+  // pdf tools
   ALL_TOOLS_LIST.forEach((tool) => {
     routes.push({
       url: `${BASE_URL}/${tool.slug}`,
@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // Legal & Informational Pages
+  // legal pages
   routes.push(
     {
       url: `${BASE_URL}/privacy`,

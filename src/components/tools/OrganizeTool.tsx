@@ -78,7 +78,7 @@ export function OrganizeTool() {
     }
   };
 
-  // Drag and Drop handlers
+  // drag handlers
   const handleDragStart = (index: number) => {
     setDraggedIndex(index);
   };
@@ -101,7 +101,7 @@ export function OrganizeTool() {
     setDraggedIndex(null);
   };
 
-  // Card Action handlers
+  // action handlers
   const handleRotatePage = (index: number, deg: number) => {
     setPages((prev) =>
       prev.map((item, i) => {
@@ -142,7 +142,7 @@ export function OrganizeTool() {
     setError(null);
   };
 
-  // Bulk Actions
+  // bulk actions
   const handleRotateAll = (deg: number) => {
     setPages((prev) =>
       prev.map((item) => ({
@@ -162,7 +162,7 @@ export function OrganizeTool() {
     }
   };
 
-  // Export
+  // export pdf
   const handleExport = async () => {
     if (!activeFile || pages.length === 0) return;
     setIsProcessing(true);

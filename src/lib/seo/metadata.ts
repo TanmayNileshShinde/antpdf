@@ -77,7 +77,7 @@ export function generateToolJsonLd(slug: string) {
 
   const toolUrl = `${BASE_URL}/${slug}`;
 
-  // 1. WebApplication Schema
+  // app schema
   const webAppSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
@@ -100,7 +100,7 @@ export function generateToolJsonLd(slug: string) {
     },
   };
 
-  // 2. HowTo Schema
+  // howto schema
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
@@ -115,7 +115,7 @@ export function generateToolJsonLd(slug: string) {
     })),
   };
 
-  // 3. FAQPage Schema
+  // faq schema
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

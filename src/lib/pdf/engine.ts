@@ -114,7 +114,7 @@ export async function compressPdf(
   const fileBytes = await fileToUint8Array(file);
   const doc = await PDFDocument.load(fileBytes, { ignoreEncryption: true });
 
-  // Remove bulky or redundant metadata tags if medium or high compression
+  // strip metadata
   if (options?.removeMetadata !== false && (quality === 'medium' || quality === 'high')) {
     doc.setTitle('');
     doc.setAuthor('');
@@ -124,7 +124,7 @@ export async function compressPdf(
     doc.setCreator('AnTPDF Client Side Engine');
   }
 
-  // Save using modern Flate object stream compression
+  // flate compression
   const compressedBytes = await doc.save({
     useObjectStreams: true,
     addDefaultPage: false,
@@ -171,7 +171,7 @@ export async function unlockPdf(
 
   const doc = await PDFDocument.load(fileBytes, { ignoreEncryption: true });
 
-  // Remove the encryption dictionary from trailer to ensure export is unencrypted
+  // decrypt trailer
   if (doc.context.trailerInfo && (doc.context.trailerInfo as Record<string, unknown>).Encrypt) {
     delete (doc.context.trailerInfo as Record<string, unknown>).Encrypt;
   }
@@ -289,7 +289,7 @@ export async function watermarkPdf(
     color = { r: 0.6, g: 0.6, b: 0.6 },
   } = options;
 
-  // Sanitize non-ASCII / curly quotes for standard Helvetica
+  // sanitize quotes
   const cleanText = text
     .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
     .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
@@ -309,7 +309,7 @@ export async function watermarkPdf(
 
   pages.forEach((page) => {
     const { width, height } = page.getSize();
-    // Center point math with rotation offset
+    // center point
     const x =
       width / 2 -
       (textWidth / 2) * Math.cos(angleRad) +
@@ -346,7 +346,7 @@ export async function flattenPdf(file: File): Promise<Blob> {
     const form = doc.getForm();
     form.flatten();
   } catch {
-    // If no form or fields exist, flatten is a no-op
+    // flatten guard
   }
 
   const flattenedBytes = await doc.save({ useObjectStreams: true });

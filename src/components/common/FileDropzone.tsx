@@ -60,7 +60,7 @@ export function FileDropzone({
           pages = await getPdfPageCount(file);
         }
       } catch {
-        // Fallback for encrypted documents
+        // encryption fallback
       }
 
       newItems.push({

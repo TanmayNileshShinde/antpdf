@@ -26,7 +26,7 @@ async function createTestPdfFile(name: string, pageCount: number = 2): Promise<F
   const doc = await PDFDocument.create();
   for (let i = 0; i < pageCount; i++) {
     const page = doc.addPage([300, 400]);
-    // Tag each page with some content
+    // page tag
     const font = await doc.embedFont('Helvetica');
     page.drawText(`Page ${i + 1} content`, { x: 50, y: 350, size: 14, font });
   }
@@ -74,7 +74,7 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
 
   it('rotates PDF pages by requested degrees permanently', async () => {
     const file = await createTestPdfFile('doc.pdf', 2);
-    // Rotate only page 1 by 90 degrees
+    // rotate page
     const rotatedBlob = await rotatePdf(file, 90, [1]);
 
     const buffer = await rotatedBlob.arrayBuffer();
@@ -101,18 +101,18 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
     expect(protectedBlob).toBeInstanceOf(Blob);
     const encryptedBuffer = await protectedBlob.arrayBuffer();
 
-    // Verify it is recognized as encrypted
+    // verify encrypted
     const encryptedDoc = await PDFDocument.load(encryptedBuffer, { ignoreEncryption: true });
     expect(encryptedDoc.isEncrypted).toBe(true);
 
-    // Now unlock it
+    // unlock pdf
     const protectedFile = new File([encryptedBuffer], 'protected.pdf', {
       type: 'application/pdf',
     });
     const unlockedBlob = await unlockPdf(protectedFile, 'AnTPDF_Secret_2026');
     const unlockedBuffer = await unlockedBlob.arrayBuffer();
 
-    // Verify unlocked PDF can be parsed normally without ignoreEncryption
+    // parse unlocked
     const unlockedDoc = await PDFDocument.load(unlockedBuffer);
     expect(unlockedDoc.getPageCount()).toBe(2);
     expect(unlockedDoc.isEncrypted).toBe(false);
@@ -277,7 +277,7 @@ describe('AnTPDF Core Client-Side Engine Tests', () => {
 
   it('removes designated pages cleanly in removePdfPages', async () => {
     const file = await createTestPdfFile('multi.pdf', 4);
-    // Remove page 2 and page 4 (1-based)
+    // remove pages
     const cleanedBlob = await removePdfPages(file, [2, 4]);
 
     expect(cleanedBlob).toBeInstanceOf(Blob);

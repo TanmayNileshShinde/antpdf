@@ -35,7 +35,7 @@ export async function convertWordToPdf(
       ? Buffer.from(arrayBuffer)
       : (arrayBuffer as unknown as Buffer);
 
-  // Parse OpenXML document to extract HTML and structured text
+  // parse docx
   const mammothInput = { buffer: inputBuffer, arrayBuffer };
   const htmlResult = await mammoth.convertToHtml(mammothInput as unknown as mammoth.MammothOptions);
   const rawTextResult = await mammoth.extractRawText(mammothInput as unknown as mammoth.MammothOptions);
@@ -56,7 +56,7 @@ export async function convertWordToPdf(
   let page = doc.addPage([pageWidth, pageHeight]);
   let y = pageHeight - margin;
 
-  // Title header from filename
+  // title header
   const cleanTitle = cleanTextForPdf(file.name.replace(/\.docx?$/i, ''));
   page.drawText(cleanTitle, {
     x: margin,
@@ -67,7 +67,7 @@ export async function convertWordToPdf(
   });
   y -= 26;
 
-  // Horizontal divider rule
+  // divider rule
   page.drawLine({
     start: { x: margin, y },
     end: { x: pageWidth - margin, y },
@@ -76,14 +76,14 @@ export async function convertWordToPdf(
   });
   y -= 22;
 
-  // Split text into paragraphs
+  // split paragraphs
   const rawParagraphs = text.split(/\r?\n\s*\r?\n/);
 
   for (const para of rawParagraphs) {
     const trimmed = para.trim();
     if (!trimmed) continue;
 
-    // Word wrap paragraph into lines
+    // wrap lines
     const words = trimmed.split(/\s+/);
     let line = '';
 
@@ -130,7 +130,7 @@ export async function convertWordToPdf(
     }
   }
 
-  // Stamp metadata
+  // stamp meta
   doc.setProducer('AnTPDF (https://antpdf.tanmayshinde.com)');
   doc.setCreator('AnTPDF Word Transcoder Engine');
 
@@ -153,7 +153,7 @@ export async function convertPdfToWord(
 ): Promise<{ blob: Blob; pageCount: number; extractedSnippet: string }> {
   const arrayBuffer = await file.arrayBuffer();
 
-  // Dynamically import pdfjs to ensure browser compatibility
+  // import pdfjs
   const pdfjsLib = await import('pdfjs-dist/build/pdf.js');
 
   const loadingTask = pdfjsLib.getDocument({
@@ -167,7 +167,7 @@ export async function convertPdfToWord(
   const docChildren: Paragraph[] = [];
   let firstSnippet = '';
 
-  // Document Title
+  // document title
   const cleanTitle = file.name.replace(/\.pdf$/i, '');
   docChildren.push(
     new Paragraph({
@@ -182,13 +182,13 @@ export async function convertPdfToWord(
     const page = await pdfDoc.getPage(pageNum);
     const content = await page.getTextContent();
 
-    // Group items into logical lines based on vertical Y position
+    // group lines
     const textItems = content.items as Array<{ str: string; transform: number[] }>;
     const linesMap = new Map<number, string[]>();
 
     for (const item of textItems) {
       if (!item.str || !item.str.trim()) continue;
-      // Round Y position to cluster text on the same line
+      // cluster line
       const rawY = item.transform ? Math.round(item.transform[5] / 4) * 4 : 0;
       if (!linesMap.has(rawY)) {
         linesMap.set(rawY, []);
@@ -196,7 +196,7 @@ export async function convertPdfToWord(
       linesMap.get(rawY)!.push(item.str);
     }
 
-    // Sort descending by Y (top of page first)
+    // sort descending
     const sortedY = Array.from(linesMap.keys()).sort((a, b) => b - a);
 
     if (sortedY.length === 0) {
@@ -234,7 +234,7 @@ export async function convertPdfToWord(
       }
     }
 
-    // Add page break between PDF pages (except the last page)
+    // page break
     if (pageNum < numPages) {
       docChildren.push(
         new Paragraph({
@@ -244,7 +244,7 @@ export async function convertPdfToWord(
     }
   }
 
-  // Create docx Document
+  // create docx
   const wordDoc = new Document({
     creator: 'AnTPDF (https://antpdf.tanmayshinde.com)',
     title: cleanTitle,

@@ -32,7 +32,7 @@ type SignatureMode = 'draw' | 'type' | 'upload';
 interface PlacedSignature {
   id: string;
   pageNumber: number;
-  // Normalized 0..1 coordinates relative to preview container
+  // normalized coords
   normX: number;
   normY: number;
   normWidth: number;
@@ -47,7 +47,7 @@ export function SignPdfTool() {
   const [isLoadingPages, setIsLoadingPages] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // Signature creation state
+  // signature state
   const [mode, setMode] = useState<SignatureMode>('draw');
   const [penColor, setPenColor] = useState('#111827');
   const [penWidth, setPenWidth] = useState(3);
@@ -55,21 +55,21 @@ export function SignPdfTool() {
   const [selectedFontStyle, setSelectedFontStyle] = useState(0);
   const [activeSignatureUrl, setActiveSignatureUrl] = useState<string | null>(null);
 
-  // Placed signatures on the document
+  // placed signatures
   const [placements, setPlacements] = useState<PlacedSignature[]>([]);
   const [selectedPlacementId, setSelectedPlacementId] = useState<string | null>(null);
 
-  // Dragging placement state
+  // drag state
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  // Canvas drawing refs
+  // canvas refs
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [hasDrawn, setHasDrawn] = useState(false);
   const lastPointRef = useRef<{ x: number; y: number } | null>(null);
 
-  // Result state
+  // result state
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
   const [resultName, setResultName] = useState('signed_document.pdf');
   const [error, setError] = useState<string | null>(null);
@@ -77,7 +77,7 @@ export function SignPdfTool() {
   const activeFile = files[0];
   const currentPage = pages[currentPageIndex];
 
-  // Initialize and handle file change
+  // handle file
   const handleFilesChange = async (newFiles: UploadedPdfMeta[]) => {
     setFiles(newFiles);
     setResultBlob(null);
@@ -108,7 +108,7 @@ export function SignPdfTool() {
     }
   };
 
-  // Canvas Drawing Handlers
+  // draw handlers
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -173,7 +173,7 @@ export function SignPdfTool() {
     setActiveSignatureUrl(dataUrl);
   };
 
-  // Generate typed cursive signature
+  // typed signature
   const fontStyles = [
     { name: 'Elegant Script', font: 'italic bold 36px "Brush Script MT", "Caveat", cursive' },
     { name: 'Classic Signature', font: 'italic 34px "Lucida Handwriting", "Great Vibes", cursive' },
@@ -200,7 +200,7 @@ export function SignPdfTool() {
     setActiveSignatureUrl(dataUrl);
   };
 
-  // Handle Image Upload for Signature or Stamp
+  // upload stamp
   const handleUploadSignature = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -217,14 +217,14 @@ export function SignPdfTool() {
 
         ctx.drawImage(img, 0, 0);
 
-        // Strip white background to make it transparent
+        // transparent bg
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const data = imgData.data;
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i];
           const g = data[i + 1];
           const b = data[i + 2];
-          // If close to white, make pixel transparent
+          // chroma key
           if (r > 225 && g > 225 && b > 225) {
             data[i + 3] = 0;
           }
@@ -237,7 +237,7 @@ export function SignPdfTool() {
     reader.readAsDataURL(file);
   };
 
-  // Place active signature on current page
+  // place signature
   const handlePlaceSignature = (targetAllPages = false) => {
     if (!activeSignatureUrl) return;
 
@@ -262,7 +262,7 @@ export function SignPdfTool() {
     setSelectedPlacementId(newPlacements[0].id);
   };
 
-  // Dragging placement inside preview
+  // drag placement
   const handleMouseDownOnSig = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     setSelectedPlacementId(id);
@@ -319,7 +319,7 @@ export function SignPdfTool() {
     );
   };
 
-  // Sign & Export PDF
+  // export pdf
   const handleSignAndExport = async () => {
     if (!activeFile || placements.length === 0) return;
     setIsProcessing(true);
@@ -331,11 +331,11 @@ export function SignPdfTool() {
         const originalWidth = targetPage.originalWidth;
         const originalHeight = targetPage.originalHeight;
 
-        // Convert normalized preview coordinates to PDF points (pdf-lib uses bottom-left origin)
+        // convert coords
         const pdfWidth = sig.normWidth * originalWidth;
         const pdfHeight = sig.normHeight * originalHeight;
         const pdfX = sig.normX * originalWidth;
-        // Invert Y coordinate for bottom-left origin
+        // invert y
         const pdfY = (1 - sig.normY - sig.normHeight) * originalHeight;
 
         return {

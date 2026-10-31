@@ -74,7 +74,7 @@ export async function convertImagesToPdf(
       pageWidth = 612;
       pageHeight = 792;
     } else {
-      // ISO A4
+      // iso a4
       pageWidth = 595.28;
       pageHeight = 841.89;
     }
