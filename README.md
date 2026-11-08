@@ -2,12 +2,12 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/TanmayNileshShinde/antpdf.svg?style=flat&color=yellow)](https://github.com/TanmayNileshShinde/antpdf/stargazers)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)](https://nextjs.org/)
-[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](https://antpdf.tanmayshinde.com/terms)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Privacy: Zero Server Uploads](https://img.shields.io/badge/Privacy-100%25%20In--Browser-emerald)](https://antpdf.tanmayshinde.com/privacy)
 [![Tests: Vitest](https://img.shields.io/badge/Tests-24%2F24%20Passing-success)](https://vitest.dev/)
 
 > **Live Website:** [https://antpdf.tanmayshinde.com](https://antpdf.tanmayshinde.com)  
-> **Authors:** Tanmay Shinde & Antara Parab
+> **Co-Authors:** [Tanmay Shinde](https://github.com/TanmayNileshShinde) & [Antara Parab](https://github.com/Antara-Parab)
 
 ---
 
