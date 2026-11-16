@@ -1,21 +1,44 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useSyncExternalStore } from 'react';
 import { Sun, Moon } from 'lucide-react';
 
-export function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setMounted(true);
-    const dark = document.documentElement.classList.contains('dark');
-    setIsDark(dark);
-  }, []);
+function subscribe(callback: () => void) {
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.attributeName === 'class') {
+        callback();
+      }
+    }
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('storage', callback);
+  return () => {
+    observer.disconnect();
+    window.removeEventListener('storage', callback);
+  };
+}
+
+function getSnapshot() {
+  return document.documentElement.classList.contains('dark');
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
+export function ThemeToggle() {
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+  const isDark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
-    setIsDark(nextDark);
     if (nextDark) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('antpdf-theme', 'dark');
